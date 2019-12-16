@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-info"> <i class="fa fa-check"></i> Salvar</button>
-                                            <button type="button" class="btn btn-info">Cancelar</button>
+                                            <button type="button" class="btn btn-info" onclick="window.location='<?php echo base_url();?>organization/Designation';return false;">Cancelar</button>
                                         </div>
                                     </form>
                             </div>
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-info"> <i class="fa fa-check"></i> Salvar</button>
-                                            <button type="button" class="btn btn-info">Cancelar</button>
+                                            <button type="button" class="btn btn-info" onclick="window.location='<?php echo base_url();?>organization/Designation';return false;">Cancelar</button>
                                         </div>
                                     </form>
                             </div>
@@ -88,7 +88,7 @@
                     <div class="col-7">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white"> Departamentos</h4>
+                                <h4 class="m-b-0 text-white">Departamentos</h4>
                             </div>
                             <?php //echo $this->session->flashdata('delsuccess'); ?>
                             <div class="card-body">
