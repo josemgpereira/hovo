@@ -251,8 +251,8 @@ class Employee extends CI_Controller
 						'allowed_types' => "gif|jpg|png|jpeg",
 						'overwrite' => False,
 						'max_size' => "20240000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-						'max_height' => "600",
-						'max_width' => "600"
+						'max_height' => "800",
+						'max_width' => "800"
 					);
 
 					$this->load->library('Upload', $config);
@@ -262,9 +262,11 @@ class Employee extends CI_Controller
 						#redirect("employee/view?I=" .base64_encode($eid));
 					} else {
 						$employee = $this->employee_model->GetBasic($id);
-						$checkimage = "./assets/images/users/$employee->em_image";
-						if (file_exists($checkimage)) {
-							unlink($checkimage);
+						if (!empty($employee->em_image)){
+							$checkimage = "./assets/images/users/$employee->em_image";
+							if (file_exists($checkimage)) {
+								unlink($checkimage);
+							}
 						}
 						$path = $this->upload->data();
 						$img_url = $path['file_name'];
