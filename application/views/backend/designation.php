@@ -111,8 +111,8 @@
                                 <tr>
                                     <td><?php echo $value->des_name;?></td>
                                     <td class="jsgrid-align-center ">
-                                        <a href="<?php echo base_url();?>organization/Edit_des/<?php echo $value->id?>" title="Edit" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a onclick="return confirm('Tem certeza de que deseja apagar esta designação?')"  href="<?php echo base_url();?>organization/des_delete/<?php echo $value->id;?>" title="Delete" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
+                                        <a href="<?php echo base_url();?>organization/Edit_des/<?php echo $value->id?>" title="Editar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a onclick="return confirm('Tem certeza de que deseja apagar esta designação?')"  href="<?php echo base_url();?>organization/des_delete/<?php echo $value->id;?>" title="Apagar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                                 <?php }?>

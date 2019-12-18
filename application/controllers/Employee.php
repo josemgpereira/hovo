@@ -100,7 +100,7 @@ class Employee extends CI_Controller
 			} else {
 				if ($this->employee_model->Does_email_exists($email)) {
 					$this->session->set_flashdata('formdata', 'Email is already Exist');
-					echo "Email is already Exist";
+					echo "O Email já existe";
 				} else {
 					if ($_FILES['image_url']['name']) {
 						$file_name = $_FILES['image_url']['name'];
@@ -150,14 +150,14 @@ class Employee extends CI_Controller
 							if ($id) {
 								$success = $this->employee_model->Update($data, $id);
 								#$this->session->set_flashdata('feedback','Successfully Updated');
-								echo "Successfully Updated";
+								echo "Atualizado com sucesso";
 								$this->session->set_flashdata('post', null);
 								//redirect(base_url().'employee/Employees','refresh');
 							} else {
 								$success = $this->employee_model->Add($data);
 								#$this->confirm_mail_send($email,$pass_hash);
 								#$this->session->set_flashdata('feedback','Successfully Created');
-								echo "Successfully Added";
+								echo "Adicionado com sucesso";
 								$this->session->set_flashdata('post', null);
 								//redirect(base_url().'employee/Employees','refresh');
 							}
@@ -186,13 +186,13 @@ class Employee extends CI_Controller
 						if ($id) {
 							$success = $this->employee_model->Update($data, $id);
 							#$this->session->set_flashdata('feedback','Successfully Updated');
-							echo "Successfully Updated";
+							echo "Atualizado com sucesso";
 							$this->session->set_flashdata('post', null);
 							//redirect(base_url().'employee/Employees','refresh');
 						} else {
 							$success = $this->employee_model->Add($data);
 							#$this->confirm_mail_send($email,$pass_hash);
-							echo "Successfully Added";
+							echo "Adicionado com sucesso";
 							$this->session->set_flashdata('post', null);
 							//redirect(base_url().'employee/Employees','refresh');
 						}

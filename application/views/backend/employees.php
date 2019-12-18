@@ -57,7 +57,7 @@
                                                 <td><?php echo $value->em_phone; ?></td>
                                                 <td><?php echo $value->em_role; ?></td>
                                                 <td class="jsgrid-align-center ">
-                                                    <a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($value->em_id); ?>" title="Edit" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($value->em_id); ?>" title="Editar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>
