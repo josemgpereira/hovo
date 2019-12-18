@@ -37,7 +37,8 @@
                                                 <th>Email</th>
                                                 <th>Telefone</th>
                                                 <th>Tipo</th>
-                                                <th>Ação</th>
+                                                <th>Estado</th>
+												<th>Ação</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -46,6 +47,7 @@
                                                 <th>Email</th>
                                                 <th>Telefone</th>
                                                 <th>Tipo</th>
+												<th>Estado</th>
                                                 <th>Ação</th>
                                             </tr>
                                         </tfoot>
@@ -56,6 +58,7 @@
                                                 <td><?php echo $value->em_email; ?></td>
                                                 <td><?php echo $value->em_phone; ?></td>
                                                 <td><?php echo $value->em_role; ?></td>
+												<td><?php echo $value->status; ?></td>
                                                 <td class="jsgrid-align-center ">
                                                     <a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($value->em_id); ?>" title="Editar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
                                                 </td>

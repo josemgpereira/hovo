@@ -229,7 +229,7 @@ class Employee extends CI_Controller
 			$blood = $this->input->post('blood');
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters();
-			$this->form_validation->set_rules('contact', 'contact', 'trim|required|min_length[10]|max_length[15]|xss_clean');
+			$this->form_validation->set_rules('contact', 'contact', 'trim|required|min_length[9]|max_length[15]|xss_clean');
 
 			$this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[7]|max_length[100]|xss_clean');
 
@@ -291,7 +291,7 @@ class Employee extends CI_Controller
 						if ($id) {
 							$success = $this->employee_model->Update($data, $id);
 							$this->session->set_flashdata('feedback', 'Successfully Updated');
-							echo "Successfully Updated";
+							echo "Atualizado com sucesso";
 						}
 					}
 				} else {
@@ -317,7 +317,7 @@ class Employee extends CI_Controller
 					if ($id) {
 						$success = $this->employee_model->Update($data, $id);
 						$this->session->set_flashdata('feedback', 'Successfully Updated');
-						echo "Successfully Updated";
+						echo "Atualizado com sucesso";
 					}
 				}
 			}

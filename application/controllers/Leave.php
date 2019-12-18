@@ -157,7 +157,7 @@ class Leave extends CI_Controller
 				$emid                = $this->session->userdata('user_login_id');
 				$data['employee']    = $this->employee_model->emselectByID($emid);
 			} else {
-				$data['employee']    = $this->employee_model->emselect(); // gets active employee details
+				$data['employee']    = $this->employee_model->emselectactive(); // gets active employee details
 			}
             $data['leavetypes']  = $this->leave_model->GetleavetypeInfo();
             $data['application'] = $this->leave_model->AllLeaveAPPlication();
@@ -487,7 +487,7 @@ class Leave extends CI_Controller
     public function Leave_report()
     {
         if ($this->session->userdata('user_login_access') != False) {
-            $data['employee'] = $this->employee_model->emselect();
+            $data['employee'] = $this->employee_model->emselectactive();
             $this->load->view('backend/leave_report', $data);
         } else {
             redirect(base_url(), 'refresh');

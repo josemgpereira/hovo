@@ -19,10 +19,17 @@
 	return $result;
 	}
     public function emselect(){
-    $sql = "SELECT * FROM `employee` WHERE `status`='ACTIVE'";
-    $query=$this->db->query($sql);
-  	$result = $query->result();
-  	return $result;
+		//$sql = "SELECT * FROM `employee` WHERE `status`='ACTIVE'";
+		$sql = "SELECT * FROM `employee`";
+		$query=$this->db->query($sql);
+		$result = $query->result();
+		return $result;
+	}
+	public function emselectactive(){
+		$sql = "SELECT * FROM `employee` WHERE `status`='ACTIVE'";
+		$query=$this->db->query($sql);
+		$result = $query->result();
+		return $result;
 	}
     public function emselectByID($emid){
     $sql = "SELECT * FROM `employee`

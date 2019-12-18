@@ -101,7 +101,7 @@
 								<input type="date" name="dob" class="form-control" placeholder="" required value="<?php echo $array_data['dob'] ?>">
 							</div>
 							<div class="form-group col-md-3 m-t-20">
-								<label>Data de Enrada</label>
+								<label>Data de Entrada</label>
 								<input type="date" name="joindate" class="form-control" placeholder="" value="<?php echo $array_data['joindate'] ?>">
 							</div>
 							<div class="form-group col-md-3 m-t-20">

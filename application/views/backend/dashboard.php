@@ -33,7 +33,7 @@
 										<?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
 											<a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($basicinfo->em_id); ?>">Ver Funcionário</a>
 										<?php } else { ?>
-                                        	<a href="<?php echo base_url(); ?>employee/Employees" class="text-muted m-b-0">Ver Funcionário</a>
+                                        	<a href="<?php echo base_url(); ?>employee/Employees" class="text-muted m-b-0">Ver Funcionários</a>
 										<?php } ?>
 									</div>
                                 </div>
