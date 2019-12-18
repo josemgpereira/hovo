@@ -378,11 +378,11 @@ class Employee extends CI_Controller
 				if (!empty($id)) {
 					$success = $this->employee_model->UpdateParmanent_Address($id, $data);
 					$this->session->set_flashdata('feedback', 'Successfully Updated');
-					echo "Successfully Updated";
+					echo "Atualizado com sucesso";
 				} else {
 					$success = $this->employee_model->AddParmanent_Address($data);
 					$this->session->set_flashdata('feedback', 'Successfully Added');
-					echo "Successfully Added";
+					echo "Adicionado com sucesso";
 				}
 
 			}

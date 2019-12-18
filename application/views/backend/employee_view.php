@@ -264,25 +264,25 @@
 						<div class="tab-pane" id="profile" role="tabpanel">
 							<div class="card">
 								<div class="card-body">
-									<h3 class="card-title">Permanent Contact Information</h3>
+									<h3 class="card-title">Contacto</h3>
 									<form class="row" action="Parmanent_Address" method="post"
 										  enctype="multipart/form-data">
 										<div class="form-group col-md-12 m-t-5">
-											<label>Address</label>
+											<label>Endereço</label>
 											<textarea name="paraddress"
 													  value="<?php if (!empty($permanent->address)) echo $permanent->address ?>" <?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?> readonly <?php } ?> class="form-control"
 													  rows="3" minlength="7"
 													  required><?php if (!empty($permanent->address)) echo $permanent->address ?></textarea>
 										</div>
 										<div class="form-group col-md-6 m-t-5">
-											<label>City</label>
+											<label>Cidade</label>
 											<input type="text" name="parcity" class="form-control form-control-line"
 												   placeholder="" <?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?> readonly <?php } ?>
 												   value="<?php if (!empty($permanent->city)) echo $permanent->city ?>"
 												   minlength="2" required>
 										</div>
 										<div class="form-group col-md-6 m-t-5">
-											<label>Country</label>
+											<label>País</label>
 											<input type="text" name="parcountry" class="form-control form-control-line"
 												   placeholder="" <?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?> readonly <?php } ?>
 												   value="<?php if (!empty($permanent->country)) echo $permanent->country ?>"
@@ -294,51 +294,7 @@
 												<input type="hidden" name="emid" value="<?php echo $basic->em_id ?>">
 												<input type="hidden" name="id"
 													   value="<?php if (!empty($permanent->id)) echo $permanent->id ?>">
-												<button type="submit" class="btn btn-info"><i class="fa fa-check"></i>
-													Save
-												</button>
-											</div>
-										<?php } ?>
-									</form>
-
-									<div class="">
-										<h3 class="col-md-12">Present Contact Information</h3>
-									</div>
-									<hr>
-									<form class="row" action="Present_Address" method="post"
-										  enctype="multipart/form-data">
-										<div class="form-group col-md-12 m-t-5">
-											<label>Address</label>
-											<textarea name="presaddress"
-													  value="<?php if (!empty($present->address)) echo $present->address ?>" <?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?> readonly <?php } ?> class="form-control"
-													  rows="3" minlength="7"
-													  required><?php if (!empty($present->address)) echo $present->address ?></textarea>
-										</div>
-										<div class="form-group col-md-6 m-t-5">
-											<label>City</label>
-											<input type="text" name="prescity" class="form-control form-control-line"
-												   value="<?php if (!empty($present->address)) echo $present->city ?>"
-												   placeholder=" City name"
-												   minlength="2" <?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?> readonly <?php } ?>
-												   required>
-										</div>
-										<div class="form-group col-md-6 m-t-5">
-											<label>Country</label>
-											<input type="text" name="prescountry" class="form-control form-control-line"
-												   placeholder=""
-												   value="<?php if (!empty($present->address)) echo $present->country ?>"
-												   minlength="2" <?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?> readonly <?php } ?>
-												   required>
-										</div>
-										<?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?>
-										<?php } else { ?>
-											<div class="form-actions col-md-12">
-												<input type="hidden" name="emid" value="<?php echo $basic->em_id ?>">
-												<input type="hidden" name="id"
-													   value="<?php if (!empty($present->id)) echo $present->id ?>">
-												<button type="submit" class="btn btn-info"><i class="fa fa-check"></i>
-													Save
-												</button>
+												<button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Salvar</button>
 											</div>
 										<?php } ?>
 									</form>
