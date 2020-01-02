@@ -224,6 +224,7 @@ $('form').each(function() {
     </script>     
 
     <script src="<?php echo base_url(); ?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 </body>
 
 </html>

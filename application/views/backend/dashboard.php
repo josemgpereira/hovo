@@ -59,6 +59,23 @@
                         </div>
                     </div>
 
+					<div class="col-lg-3 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<div class="d-flex flex-row">
+									<div class="round align-self-center round-info"><i class="ti-user"></i></div>
+									<div class="m-l-10 align-self-center">
+										<?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
+											<a href="<?php echo base_url(); ?>calendar/Leaves" class="text-muted m-b-0">Calendário</a>
+										<?php } else { ?>
+											<a href="<?php echo base_url(); ?>calendar/Leaves" class="text-muted m-b-0">Calendário</a>
+										<?php } ?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 
                 </div>
 				<!-- ============================================================== -->
