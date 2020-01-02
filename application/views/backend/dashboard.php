@@ -48,7 +48,11 @@
                                 <div class="d-flex flex-row">
                                     <div class="round align-self-center round-info"><i class="ti-user"></i></div>
                                     <div class="m-l-10 align-self-center">
-                                        <a href="<?php echo base_url(); ?>leave/Application" class="text-muted m-b-0">Ver Licença</a>
+										<?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
+											<a href="<?php echo base_url(); ?>leave/EmApplication" class="text-muted m-b-0">Ver Licença</a>
+										<?php } else { ?>
+											<a href="<?php echo base_url(); ?>leave/Application" class="text-muted m-b-0">Ver Licença</a>
+										<?php } ?>
                                     </div>
                                 </div>
                             </div>

@@ -499,10 +499,10 @@ class Employee extends CI_Controller
 				);
 				if (empty($id)) {
 					$success = $this->employee_model->Insert_Media($data);
-					echo "Successfully Added";
+					echo "Adicionado com sucesso";
 				} else {
 					$success = $this->employee_model->Update_Media($id, $data);
-					echo "Successfully Updated";
+					echo "Atualizado com sucesso";
 				}
 
 			}
@@ -666,11 +666,11 @@ class Employee extends CI_Controller
 				$success = $this->employee_model->Reset_Password($id, $data);
 				#$this->session->set_flashdata('feedback','Successfully Updated');
 				#redirect("employee/view?I=" .base64_encode($id));
-				echo "Successfully Updated";
+				echo "Atualizado com sucesso";
 			} else {
-				$this->session->set_flashdata('feedback', 'Please enter valid password');
+				//$this->session->set_flashdata('feedback', 'Please enter valid password');
 				#redirect("employee/view?I=" .base64_encode($id));
-				echo "Please enter valid password";
+				echo "Nova Senha deve ser igual a Confirmar Nova Senha";
 			}
 
 		} else {
@@ -693,18 +693,18 @@ class Employee extends CI_Controller
 						'em_password' => sha1($onep)
 					);
 					$success = $this->employee_model->Reset_Password($id, $data);
-					$this->session->set_flashdata('feedback', 'Successfully Updated');
+					//$this->session->set_flashdata('feedback', 'Successfully Updated');
 					#redirect("employee/view?I=" .base64_encode($id));
-					echo "Successfully Updated";
+					echo "Atualizado com sucesso";
 				} else {
-					$this->session->set_flashdata('feedback', 'Please enter valid password');
+					//$this->session->set_flashdata('feedback', 'Please enter valid password');
 					#redirect("employee/view?I=" .base64_encode($id));
-					echo "Please enter valid password";
+					echo "Nova Senha deve ser igual a Confirmar Nova Senha";
 				}
 			} else {
-				$this->session->set_flashdata('feedback', 'Please enter valid password');
+				//$this->session->set_flashdata('feedback', 'Please enter valid password');
 				#redirect("employee/view?I=" .base64_encode($id));
-				echo "Please enter valid password";
+				echo "A senha antiga está incorrecta";
 			}
 		} else {
 			redirect(base_url(), 'refresh');
