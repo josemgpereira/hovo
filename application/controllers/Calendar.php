@@ -14,6 +14,7 @@ class Calendar extends CI_Controller
 		$this->load->model('leave_model');
 		$this->load->model('settings_model');
 		$this->load->model('project_model');
+		$this->load->model('calendar_model');
 	}
 
 	public function index()
@@ -27,12 +28,20 @@ class Calendar extends CI_Controller
 	public function Leaves()
 	{
 		if ($this->session->userdata('user_login_access') != False) {
-			$data['result'] = $this->db->get("events")->result();
+			$data['result'] = $this->db->get("emp_leave")->result();
 			foreach ($data['result'] as $key => $value) {
-				$data['data'][$key]['title'] = $value->title;
-				$data['data'][$key]['start'] = $value->start_date;
-				$data['data'][$key]['end'] = $value->end_date;
-				$data['data'][$key]['backgroundColor'] = "#00a65a";
+				if($value->leave_status == 'Approve'){
+					$data['name'] = $this->calendar_model->nameSelectByID($value->em_id);
+					$data['data'][$key]['title'] = $data['name']->first_name . ' ' . $data['name']->last_name;
+					$data['data'][$key]['start'] = $value->start_date;
+					$data['data'][$key]['end'] = $value->end_date;
+					$data['data'][$key]['backgroundColor'] = "#00a65a";
+				}else {
+					$data['data'][$key]['title'] = "";
+					$data['data'][$key]['start'] = "";
+					$data['data'][$key]['end'] = "";
+					$data['data'][$key]['backgroundColor'] = "";
+				}
 			}
 			$this->load->view('backend/calendar', $data);
 		} else {
