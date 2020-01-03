@@ -130,7 +130,7 @@
                             <div class="form-group">
                                 <label>Funcionário</label>
                                 <select class=" form-control custom-select selectedEmployeeID"  tabindex="1" name="emid" required>
-                                    <option value="<?php echo $employee->em_id ?>"><?php echo $employee->first_name ?></option>
+                                    <option value="<?php echo $employee->em_id ?>"><?php echo $employee->first_name . ' ' . $employee->last_name ?></option>
                                 </select>
                             </div>
                             <div class="form-group">
