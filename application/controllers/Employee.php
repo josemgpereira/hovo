@@ -345,6 +345,7 @@ class Employee extends CI_Controller
 			$data['socialmedia'] = $this->employee_model->GetSocialValue($id);
 			$year = date('Y');
 			$data['Leaveinfo'] = $this->employee_model->GetLeaveiNfo($id, $year);
+			$data['leaves'] = $this->employee_model->GetLeaves($id);
 			$this->load->view('backend/employee_view', $data);
 		} else {
 			redirect(base_url(), 'refresh');
@@ -802,6 +803,40 @@ class Employee extends CI_Controller
 				);
 				$success = $this->employee_model->Add_Assign_Leave($data);
 				echo "Successfully Added";
+			}
+		} else {
+			redirect(base_url(), 'refresh');
+		}
+	}
+
+	public function Leaves_days()
+	{
+		if ($this->session->userdata('user_login_access') != False) {
+			$emid = $this->input->post('em_id');
+			$day = $this->input->post('noday');
+			$this->load->library('form_validation');
+			$this->form_validation->set_error_delimiters();
+			$this->form_validation->set_rules('noday', 'noday', 'trim|required|xss_clean');
+
+
+			if ($this->form_validation->run() == FALSE) {
+				echo validation_errors();
+			} else {
+				$data = array();
+				$data = array(
+					'emp_id' => $emid,
+					'days' => $day
+				);
+
+				$emp['leaves'] = $this->employee_model->GetLeaves($emid);
+
+				if (!empty($emp['leaves'])) {
+					$success = $this->employee_model->Update_Leaves_Days($emid,$data);
+					echo "Atualizado com sucesso";
+				} else {
+					$success = $this->employee_model->Add_Leaves_Days($data);
+					echo "Adicionado com sucesso";
+				}
 			}
 		} else {
 			redirect(base_url(), 'refresh');

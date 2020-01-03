@@ -29,6 +29,8 @@
 												style="font-size: 14px;">Endereço</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#social" role="tab"
 												style="font-size: 14px;">Redes Sociais</a></li>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#leave" role="tab"
+												style="font-size: 14px;">Férias</a></li>
 						<?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?>
 							<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#password" role="tab"
 													style="font-size: 14px;">Alterar Senha</a></li>
@@ -349,6 +351,36 @@
 								</div>
 							</div>
 						</div>
+
+
+						<div class="tab-pane" id="leave" role="tabpanel">
+							<div class="card">
+								<div class="card-body">
+									<h3 class="card-title">Férias</h3>
+									<form class="row" action="Leaves_days" method="post"
+										  enctype="multipart/form-data">
+
+										<div class="form-group col-md-6 m-t-5">
+											<label>Número de Dias</label>
+											<input type="text" name="noday" class="form-control form-control-line"
+												   placeholder="" <?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?> readonly <?php } ?>
+												   value="<?php if (!empty($leaves->days)) echo $leaves->days ?>" required>
+										</div>
+
+										<?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?>
+										<?php } else { ?>
+											<div class="form-actions col-md-12">
+												<input type="hidden" name="em_id" value="<?php echo $basic->em_id ?>">
+												<button type="submit" class="btn btn-info"><i class="fa fa-check"></i>
+													Salvar
+												</button>
+											</div>
+										<?php } ?>
+									</form>
+								</div>
+							</div>
+						</div>
+
 
 						<div class="tab-pane" id="password1" role="tabpanel">
 							<div class="card-body">
