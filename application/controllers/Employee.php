@@ -155,6 +155,12 @@ class Employee extends CI_Controller
 								//redirect(base_url().'employee/Employees','refresh');
 							} else {
 								$success = $this->employee_model->Add($data);
+								$leaves = array();
+								$leaves = array(
+									'emp_id' => $emrand,
+									'days' => 22,
+								);
+								$success = $this->employee_model->AddLeaves($leaves);
 								#$this->confirm_mail_send($email,$pass_hash);
 								#$this->session->set_flashdata('feedback','Successfully Created');
 								echo "Adicionado com sucesso";
@@ -191,6 +197,12 @@ class Employee extends CI_Controller
 							//redirect(base_url().'employee/Employees','refresh');
 						} else {
 							$success = $this->employee_model->Add($data);
+							$leaves = array();
+							$leaves = array(
+								'emp_id' => $emrand,
+								'days' => 22,
+							);
+							$success = $this->employee_model->AddLeaves($leaves);
 							#$this->confirm_mail_send($email,$pass_hash);
 							echo "Adicionado com sucesso";
 							$this->session->set_flashdata('post', null);

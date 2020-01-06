@@ -66,6 +66,11 @@
     public function Add($data){
         $this->db->insert('employee',$data);
     }
+
+	public function AddLeaves($data){
+		$this->db->insert('leaves',$data);
+	}
+
     public function GetBasic($id){
       $sql = "SELECT `employee`.*,
       `designation`.*,

@@ -35,7 +35,6 @@
                                 <thead>
                                     <tr>
                                         <th>Nome do Funcionário</th>
-                                        <th>Tipo</th>
                                         <th>Data de Requerimento</th>
                                         <th>Data Inicial</th>
                                         <th>Data Final</th>
@@ -47,7 +46,6 @@
                                 <tfoot>
                                     <tr>
                                         <th>Nome do Funcionário</th>
-                                        <th>Tipo</th>
                                         <th>Data de Requerimento</th>
                                         <th>Data Inicial</th>
                                         <th>Data Final</th>
@@ -60,7 +58,6 @@
                                     <?php foreach($application as $value): ?>
                                     <tr style="vertical-align:top">
                                         <td><span><?php echo $value->first_name.' '.$value->last_name ?></span></td>
-                                        <td><?php echo $value->name; ?></td>
                                         <td><?php echo date('jS \of F Y',strtotime($value->apply_date)); ?></td>
                                         <td><?php echo $value->start_date; ?></td>
                                         <td><?php echo $value->end_date; ?></td>
@@ -149,17 +146,6 @@
 											<?php } ?>
 											<?php endforeach;
 										}?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Tipo</label>
-                                    <select class="form-control custom-select assignleave"  tabindex="1" name="typeid" id="leavetype" required>
-                                        <option value="">Selecione o Tipo</option>
-                                        <?php foreach($leavetypes as $value): ?>
-
-                                        <option value="<?php echo $value->type_id ?>"><?php echo $value->name ?></option>
-
-                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -260,11 +246,10 @@
         $('.fetchLeaveTotal').on('click', function (e) {
             e.preventDefault();
             var selectedEmployeeID = $('.selectedEmployeeID').val();
-            var leaveTypeID = $('.assignleave').val();
             //console.log(selectedEmployeeID, leaveTypeID);
             $.ajax({
-                url: 'LeaveAssign?leaveID=' + leaveTypeID + '&employeeID=' +selectedEmployeeID,
-                method: 'GET',
+				url: 'LeaveAssign?employeeID=' + selectedEmployeeID,
+				method: 'GET',
                 data: '',
             }).done(function (response) {
                 //console.log(response);
