@@ -77,10 +77,13 @@ class Ferias extends CI_Controller
 			} else if ($type == 'Full Day') {
 				$duration = 8;
 			} else {
-				$formattedStart = new DateTime($appstartdate);
-				$formattedEnd = new DateTime($appenddate);
+				//$formattedStart = new DateTime($appstartdate);
+				//$formattedEnd = new DateTime($appenddate);
 
-				$duration = $formattedStart->diff($formattedEnd)->format("%d");
+				//$duration = $formattedStart->diff($formattedEnd)->format("%d");
+				//$duration = $duration * 8;
+
+				$duration = $this->number_of_working_days($appstartdate,$appenddate);
 				$duration = $duration * 8;
 			}
 
@@ -265,5 +268,38 @@ class Ferias extends CI_Controller
 		} else {
 			redirect(base_url(), 'refresh');
 		}
+	}
+
+	public function number_of_working_days($from, $to) {
+		$workingDays = array(1,2,3,4,5);
+		$holidayDays = array(
+			'*-01-01', '*-04-25', '*-05-01', '*-06-10', '*-08-15', '*-10-05', '*-11-01', '*-12-01', '*-12-08', '*-12-25',
+			'2020-04-10', '2020-04-12', '2020-06-11',
+			'2021-04-02', '2021-04-04', '2021-06-03',
+			'2022-04-15', '2022-04-17', '2022-06-16',
+			'2023-04-07', '2023-04-09', '2023-06-08',
+			'2024-03-29', '2024-03-31', '2024-05-30',
+			'2025-04-18', '2025-04-20', '2025-06-19',
+			'2026-04-03', '2026-04-05', '2026-06-04',
+			'2027-03-26', '2027-03-28', '2027-05-27',
+			'2028-04-14', '2028-04-16', '2028-06-15',
+			'2029-03-30', '2029-04-01', '2029-05-31',
+			'2030-04-19', '2030-04-21', '2030-06-20'
+
+		);
+		$from = new DateTime($from);
+		$to = new DateTime($to);
+		$to->modify('+1 day');
+		$interval = new DateInterval('P1D');
+		$periods = new DatePeriod($from, $interval, $to);
+
+		$days = 0;
+		foreach ($periods as $period) {
+			if (!in_array($period->format('N'), $workingDays)) continue;
+			if (in_array($period->format('Y-m-d'), $holidayDays)) continue;
+			if (in_array($period->format('*-m-d'), $holidayDays)) continue;
+			$days++;
+		}
+		return $days;
 	}
 }
