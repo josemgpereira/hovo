@@ -46,8 +46,8 @@
                             <ul aria-expanded="false" class="collapse">
                                 <!--<li><a href="<?php echo base_url(); ?>leave/Holidays">Feriado</a></li>-->
                                 <!--<li><a href="<?php echo base_url(); ?>leave/leavetypes">Tipo de Licença</a></li>-->
-                                <li><a href="<?php echo base_url(); ?>leave/Application">Requerimento de Licença</a></li>
-								<!--<li><a href="<?php echo base_url(); ?>ferias/Application">Requerimento de Licença</a></li>-->
+                                <!--<li><a href="<?php echo base_url(); ?>leave/Application">Requerimento de Licença</a></li>-->
+								<li><a href="<?php echo base_url(); ?>ferias/Application">Requerimento de Licença</a></li>
                                 <li><a href="<?php echo base_url(); ?>leave/Leave_report">Relatório</a></li>
                             </ul>
                         </li>

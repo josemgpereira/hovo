@@ -84,6 +84,13 @@ class Ferias extends CI_Controller
 				$duration = $duration * 8;
 			}
 
+			$leaveleftdays = $this->LeaveLeftDays($emid);
+			$leavelefthour = $leaveleftdays * 8;
+
+			if ($leavelefthour < $duration) {
+				echo "Saldo Insuficiente";
+			} else {
+
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters();
 			$this->form_validation->set_rules('startdate', 'Start Date', 'trim|required|xss_clean');
@@ -107,15 +114,17 @@ class Ferias extends CI_Controller
 					$success = $this->leave_model->Application_Apply($data);
 					#$this->session->set_flashdata('feedback','Successfully Updated');
 					#redirect("leave/Application");
-					echo "Successfully Added";
+					echo "Adicionado com sucesso";
 				} else {
 					$success = $this->leave_model->Application_Apply_Update($id, $data);
 					#$this->session->set_flashdata('feedback','Successfully Updated');
 					#redirect("leave/Application");
-					echo "Successfully Updated";
+					echo "Atualizado com sucesso";
 				}
 
 			}
+		}
+
 		} else {
 			redirect(base_url(), 'refresh');
 		}
@@ -137,6 +146,22 @@ class Ferias extends CI_Controller
 		}
 	}
 
+	public function LeaveLeftDays($employeeID)
+	{
+		if ($this->session->userdata('user_login_access') != False) {
+			$days = $this->ferias_model->Getempdays($employeeID);
+			if(!empty($days)){
+				$totaldays = $days->days;
+			} else {
+				$totaldays = 0;
+			}
+			return $totaldays;
+		} else {
+			redirect(base_url(), 'refresh');
+		}
+	}
+
+
 	public function GetemployeeGmLeave()
 	{
 		$year = $this->input->get('year');
@@ -156,6 +181,7 @@ class Ferias extends CI_Controller
 	public function approveLeaveStatus()
 	{
 		if ($this->session->userdata('user_login_access') != False) {
+
 			$employeeId = $this->input->post('employeeId');
 			$id = $this->input->post('lid');
 			$value = $this->input->post('lvalue');
@@ -168,54 +194,62 @@ class Ferias extends CI_Controller
 			$data = array(
 				'leave_status' => $value
 			);
-			$success = $this->leave_model->updateAplicationAsResolved($id, $data);
-			if ($value == 'Approve') {
-				$dias = $this->ferias_model->Getempdays($employeeId);
-				$dias = $dias->days;
-				$duracao = $duration;
-				$duracao = $dias-($duracao/8);
-				$data = array();
-				$data = array(
-					'days' => $duracao
-				);
 
-				$success = $this->ferias_model->UpdateLeaves($employeeId, $data);
+			$leaveleftdays = $this->LeaveLeftDays($employeeId);
+			$leavelefthour = $leaveleftdays * 8;
 
-				$determineIfNew = $this->leave_model->determineIfNewLeaveAssign($employeeId, $type);
-				//How much taken
-				$totalHour = $this->leave_model->getLeaveTypeTotal($employeeId, $type);
-				//If already taken some
-				if ($determineIfNew > 0) {
-					$total = $totalHour[0]->totalTaken + $duration;
+			if ($value == 'Approve' && ($leavelefthour < $duration)) {
+				echo "Saldo Insuficiente";
+			} else {
+				$success = $this->leave_model->updateAplicationAsResolved($id, $data);
+				if ($value == 'Approve') {
+					$dias = $this->ferias_model->Getempdays($employeeId);
+					$dias = $dias->days;
+					$duracao = $duration;
+					$duracao = $dias - ($duracao / 8);
 					$data = array();
 					$data = array(
-						'hour' => $total
+						'days' => $duracao
 					);
-					$success = $this->leave_model->updateLeaveAssignedInfo($employeeId, $type, $data);
-					$earnval = $this->leave_model->emEarnselectByLeave($employeeId);
-					if (!empty($earnval)) {
+
+					$success = $this->ferias_model->UpdateLeaves($employeeId, $data);
+
+					$determineIfNew = $this->leave_model->determineIfNewLeaveAssign($employeeId, $type);
+					//How much taken
+					$totalHour = $this->leave_model->getLeaveTypeTotal($employeeId, $type);
+					//If already taken some
+					if ($determineIfNew > 0) {
+						$total = $totalHour[0]->totalTaken + $duration;
 						$data = array();
 						$data = array(
-							'present_date' => $earnval->present_date - ($duration / 8),
-							'hour' => $earnval->hour - $duration
+							'hour' => $total
 						);
-						$success = $this->leave_model->UpdteEarnValue($employeeId, $data);
+						$success = $this->leave_model->updateLeaveAssignedInfo($employeeId, $type, $data);
+						$earnval = $this->leave_model->emEarnselectByLeave($employeeId);
+						if (!empty($earnval)) {
+							$data = array();
+							$data = array(
+								'present_date' => $earnval->present_date - ($duration / 8),
+								'hour' => $earnval->hour - $duration
+							);
+							$success = $this->leave_model->UpdteEarnValue($employeeId, $data);
+						}
+						echo "Atualizado com sucesso";
+					} else {
+						//If not taken yet
+						$data = array();
+						$data = array(
+							'emp_id' => $employeeId,
+							'type_id' => $type,
+							'hour' => $duration,
+							'dateyear' => date('Y')
+						);
+						$success = $this->leave_model->insertLeaveAssignedInfo($data);
+						echo "Atualizado com sucesso";
 					}
-					echo "Updated successfully";
 				} else {
-					//If not taken yet
-					$data = array();
-					$data = array(
-						'emp_id' => $employeeId,
-						'type_id' => $type,
-						'hour' => $duration,
-						'dateyear' => date('Y')
-					);
-					$success = $this->leave_model->insertLeaveAssignedInfo($data);
-					echo "Updated successfully";
+					echo "Atualizado com sucesso";
 				}
-			} else {
-				echo "Updated successfully";
 			}
 		}
 	}

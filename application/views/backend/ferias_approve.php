@@ -1,7 +1,7 @@
 <?php $this->load->view('backend/header'); ?>
 <?php $this->load->view('backend/sidebar'); ?>
 <div class="page-wrapper">
-    <!--<div class="message"></div>-->
+    <div class="message"></div>
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
             <h3 class="text-themecolor"><i class="fa fa-clone" style="color:#1976d2"> </i> Requerimento de Licença</h3>
