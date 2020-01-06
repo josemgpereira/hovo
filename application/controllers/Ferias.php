@@ -48,7 +48,7 @@ class Ferias extends CI_Controller
 			$data['employee'] = $this->employee_model->emselectByID($emid);
 			$data['leavetypes'] = $this->leave_model->GetleavetypeInfo();
 			$data['application'] = $this->leave_model->GetallApplication($emid);
-			$this->load->view('backend/leave_apply', $data);
+			$this->load->view('backend/ferias_apply', $data);
 		} else {
 			redirect(base_url(), 'refresh');
 		}

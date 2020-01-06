@@ -29,8 +29,8 @@
 						<li><a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($basicinfo->em_id); ?>" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Funcionário</span></a></li>
 						<li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Licença</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>leave/Holidays">Feriado</a></li>
-                                <li><a href="<?php echo base_url(); ?>leave/EmApplication">Requerimento de Licença</a></li>
+                                <!--<li><a href="<?php echo base_url(); ?>leave/Holidays">Feriado</a></li>-->
+                                <!--<li><a href="<?php echo base_url(); ?>leave/EmApplication">Requerimento de Licença</a></li>-->
 								<li><a href="<?php echo base_url(); ?>ferias/EmApplication">Requerimento de Licença</a></li>
                             </ul>
                         </li>
@@ -44,10 +44,10 @@
 						<li><a href="<?php echo base_url(); ?>employee/Employees" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Funcionários</span></a></li>
 						<li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Licença</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url(); ?>leave/Holidays">Feriado</a></li>
-                                <li><a href="<?php echo base_url(); ?>leave/leavetypes">Tipo de Licença</a></li>
+                                <!--<li><a href="<?php echo base_url(); ?>leave/Holidays">Feriado</a></li>-->
+                                <!--<li><a href="<?php echo base_url(); ?>leave/leavetypes">Tipo de Licença</a></li>-->
                                 <li><a href="<?php echo base_url(); ?>leave/Application">Requerimento de Licença</a></li>
-								<li><a href="<?php echo base_url(); ?>ferias/Application">Requerimento de Licença</a></li>
+								<!--<li><a href="<?php echo base_url(); ?>ferias/Application">Requerimento de Licença</a></li>-->
                                 <li><a href="<?php echo base_url(); ?>leave/Leave_report">Relatório</a></li>
                             </ul>
                         </li>
