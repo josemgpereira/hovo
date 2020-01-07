@@ -64,12 +64,14 @@ class Leaves extends CI_Controller
 			$applydate = date('Y-m-d');
 			$appstartdate = $this->input->post('startdate');
 			$appenddate = $this->input->post('enddate');
+			$type = $this->input->post('type');
 			if (empty($appenddate)) {
+				$appenddate = $appstartdate;
+			} elseif ($type == 'Half Day' or $type == 'Full Day'){
 				$appenddate = $appstartdate;
 			}
 			$hourAmount = $this->input->post('hourAmount');
 			$reason = $this->input->post('reason');
-			$type = $this->input->post('type');
 			// $duration     = $this->input->post('duration');
 
 			if ($type == 'Half Day') {
