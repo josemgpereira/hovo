@@ -49,6 +49,7 @@
 				week : 'week',
 				day  : 'day'
 			},
+			weekends: false,
 			events    : events
 		})
 	</script>
