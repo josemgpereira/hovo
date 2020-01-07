@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ferias extends CI_Controller
+class Leaves extends CI_Controller
 {
 
 	function __construct()

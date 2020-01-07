@@ -34,7 +34,11 @@ class Calendar extends CI_Controller
 					$data['name'] = $this->calendar_model->nameSelectByID($value->em_id);
 					$data['data'][$key]['title'] = $data['name']->first_name . ' ' . $data['name']->last_name;
 					$data['data'][$key]['start'] = $value->start_date;
-					$data['data'][$key]['end'] = $value->end_date;
+					$end_date = new DateTime($value->end_date);
+					$end_date->modify('+1 day');
+					$end_date = $end_date->format('Y-m-d');
+					$data['data'][$key]['end'] = $end_date;
+					//$data['data'][$key]['end'] = ($value->end_date)->modify('+1 day');
 					$data['data'][$key]['backgroundColor'] = "#00a65a";
 				}else {
 					$data['data'][$key]['title'] = "";
