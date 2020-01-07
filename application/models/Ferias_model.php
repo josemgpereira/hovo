@@ -29,5 +29,12 @@
 		$this->db->update('leaves', $data);
 	}
 
+	public function Getdepid($em_id){
+		$sql = "SELECT `dep_id` FROM `employee` WHERE `employee`.`em_id`='$em_id'";
+		$query = $this->db->query($sql);
+		$result = $query->row();
+		return $result;
+	}
+
     }
 ?>    

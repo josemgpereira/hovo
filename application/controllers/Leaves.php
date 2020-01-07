@@ -59,6 +59,8 @@ class Leaves extends CI_Controller
 		if ($this->session->userdata('user_login_access') != False) {
 			$id = $this->input->post('id');
 			$emid = $this->input->post('emid');
+			$dep_id = $this->ferias_model->Getdepid($emid);
+			$dep_id = $dep_id->dep_id;
 			//$typeid = $this->input->post('typeid');
 			$typeid = 0;
 			$applydate = date('Y-m-d');
@@ -113,7 +115,8 @@ class Leaves extends CI_Controller
 					'reason' => $reason,
 					'leave_type' => $type,
 					'leave_duration' => $duration,
-					'leave_status' => 'Not Approve'
+					'leave_status' => 'Not Approve',
+					'dep_id' => $dep_id
 				);
 				if (empty($id)) {
 					$success = $this->leave_model->Application_Apply($data);
