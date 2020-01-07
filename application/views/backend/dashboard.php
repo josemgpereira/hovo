@@ -28,7 +28,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-row">
-                                    <div class="round align-self-center round-success"><i class="ti-wallet"></i></div>
+                                    <div class="round align-self-center round-info"><i class="ti-user"></i></div>
                                     <div class="m-l-10 align-self-center">
 										<?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
 											<a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($basicinfo->em_id); ?>">Ver Funcionário</a>
@@ -46,7 +46,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-row">
-                                    <div class="round align-self-center round-info"><i class="ti-user"></i></div>
+                                    <div class="round align-self-center round-info"><i class="ti-rocket"></i></div>
                                     <div class="m-l-10 align-self-center">
 										<?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
 											<a href="<?php echo base_url(); ?>leave/EmApplication" class="text-muted m-b-0">Ver Licença</a>
@@ -63,7 +63,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="d-flex flex-row">
-									<div class="round align-self-center round-info"><i class="ti-user"></i></div>
+									<div class="round align-self-center round-info"><i class="ti-calendar"></i></div>
 									<div class="m-l-10 align-self-center">
 										<?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
 											<a href="<?php echo base_url(); ?>calendar/Leaves" class="text-muted m-b-0">Calendário</a>

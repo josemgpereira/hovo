@@ -26,7 +26,7 @@
                         <li class="nav-devider"></li>
                         <li> <a href="<?php echo base_url(); ?>" ><i class="mdi mdi-gauge"></i><span class="hide-menu">Painel</span></a></li>
                         <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
-						<li><a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($basicinfo->em_id); ?>" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Funcionário</span></a></li>
+						<li><a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($basicinfo->em_id); ?>" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Funcionário</span></a></li>
 						<li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Licença</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <!--<li><a href="<?php echo base_url(); ?>leave/Holidays">Feriado</a></li>-->
@@ -51,8 +51,9 @@
                                 <li><a href="<?php echo base_url(); ?>leave/Leave_report">Relatório</a></li>
                             </ul>
                         </li>
-                        <?php } ?>
-                    </ul>
+						<?php } ?>
+						<li><a href="<?php echo base_url(); ?>calendar/Leaves"><i class="mdi mdi-calendar"></i><span class="hide-menu">Calendário</span></a></li>
+					</ul>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
