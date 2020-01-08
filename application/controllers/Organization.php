@@ -36,6 +36,7 @@ class Organization extends CI_Controller {
     public function Save_dep(){
     if($this->session->userdata('user_login_access') != False) { 
        $dep = $this->input->post('department');
+       $min_emp = $this->input->post('min_emp');
        $this->load->library('form_validation');
        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
        $this->form_validation->set_rules('department','department','trim|required|xss_clean');
@@ -44,10 +45,10 @@ class Organization extends CI_Controller {
            echo validation_errors();
        }else{
         $data = array();
-        $data = array('dep_name' => $dep);
+        $data = array('dep_name' => $dep, 'min_emp' => $min_emp);
         $success = $this->organization_model->Add_Department($data);
         $this->session->set_flashdata('feedback','Successfully Added');
-           echo "Successfully Added";
+           echo "Adicionado com sucesso";
        }
         }
     else{
@@ -78,10 +79,11 @@ class Organization extends CI_Controller {
         if($this->session->userdata('user_login_access') != False) { 
         $id = $this->input->post('id');
         $department = $this->input->post('department');
-        $data =  array('dep_name' => $department );
+        $min_emp = $this->input->post('min_emp');
+        $data =  array('dep_name' => $department, 'min_emp' => $min_emp);
         $this->organization_model->Update_Department($id, $data);
         #$this->session->set_flashdata('feedback','Updated Successfully');
-        echo "Successfully Added";
+        echo "Atualizado com sucesso";
         }
     else{
 		redirect(base_url() , 'refresh');
@@ -109,7 +111,7 @@ class Organization extends CI_Controller {
             $data = array();
             $data = array('des_name' => $des);
             $success = $this->organization_model->Add_Designation($data);
-            echo "Successfully Added";
+            echo "Adicionado com sucesso";
         }
         }
     else{
@@ -142,7 +144,7 @@ class Organization extends CI_Controller {
         $designation = $this->input->post('designation');
         $data =  array('des_name' => $designation );
         $this->organization_model->Update_Designation($id, $data);
-        echo "Successfully Updated";
+        echo "Atualizado com sucesso";
         }
     else{
 		redirect(base_url() , 'refresh');

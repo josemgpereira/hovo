@@ -12,7 +12,7 @@
                     </ol>
                 </div>
             </div>
-            <!--<div class="message"></div>-->
+            <div class="message"></div>
             <div class="container-fluid">         
                 <div class="row">
                     <div class="col-lg-5">
@@ -34,8 +34,11 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label">Nome do Departamento</label>
-                                                        <input type="text" name="department" id="firstName" value="<?php  echo $editdepartment->dep_name;?>" class="form-control" placeholder="">
-                                                        <input type="hidden" name="id" value="<?php  echo $editdepartment->id;?>">
+                                                        <input type="text" name="department" id="firstName" value="<?php  echo $editdepartment->dep_name;?>" class="form-control" placeholder="" minlength="3" required>
+														<br>
+														<label class="control-label">Mínimo de Funcionários</label>
+														<input type="text" name="min_emp" id="min_emp" value="<?php  echo $editdepartment->min_emp;?>" class="form-control" placeholder="">
+														<input type="hidden" name="id" value="<?php  echo $editdepartment->id;?>">
                                                     </div>
                                                 </div>
                                                 <!--/span-->
@@ -44,7 +47,7 @@
                                         </div>
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-info"> <i class="fa fa-check"></i> Salvar</button>
-                                            <button type="button" class="btn btn-info" onclick="window.location='<?php echo base_url();?>organization/Designation';return false;">Cancelar</button>
+                                            <button type="button" class="btn btn-info" onclick="window.location='<?php echo base_url();?>organization/Department';return false;">Cancelar</button>
                                         </div>
                                     </form>
                             </div>
@@ -69,7 +72,10 @@
                                                     <div class="form-group">
                                                         <label class="control-label">Nome do Departamento</label>
                                                         <input type="text" name="department" id="firstName" value="" class="form-control" placeholder="" minlength="3" required>
-                                                    </div>
+														<br>
+														<label class="control-label">Mínimo de Funcionários</label>
+														<input type="text" name="min_emp" id="min_emp" value="" class="form-control" placeholder="">
+													</div>
                                                 </div>
                                                 <!--/span-->
                                             </div>
@@ -77,7 +83,7 @@
                                         </div>
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-info"> <i class="fa fa-check"></i> Salvar</button>
-                                            <button type="button" class="btn btn-info" onclick="window.location='<?php echo base_url();?>organization/Designation';return false;">Cancelar</button>
+                                            <button type="button" class="btn btn-info" onclick="window.location='<?php echo base_url();?>organization/Department';return false;">Cancelar</button>
                                         </div>
                                     </form>
                             </div>
@@ -97,12 +103,14 @@
                                         <thead>
                                             <tr>
                                                 <th>Nome do Departamento</th>
+												<th>Mínimo de Funcionários</th>
                                                 <th>Ação</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>Nome do Departamento</th>
+												<th>Mínimo de Funcionários</th>
                                                 <th>Ação</th>
                                             </tr>
                                         </tfoot>
@@ -111,6 +119,7 @@
                                             <?php foreach ($department as $value) { ?>
                                             <tr>
                                                 <td><?php echo $value->dep_name;?></td>
+												<td><?php echo $value->min_emp;?></td>
                                                 <td class="jsgrid-align-center ">
                                                     <a href="<?php echo base_url();?>organization/dep_edit/<?php echo $value->id;?>" title="Editar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
                                                     <a onclick="return confirm('Tem certeza de que deseja apagar este departamento?')" href="<?php echo base_url();?>organization/Delete_dep/<?php echo $value->id;?>" title="Apagar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
