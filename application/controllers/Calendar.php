@@ -39,7 +39,8 @@ class Calendar extends CI_Controller
 					$end_date = $end_date->format('Y-m-d');
 					$data['data'][$key]['end'] = $end_date;
 					//$data['data'][$key]['end'] = ($value->end_date)->modify('+1 day');
-					$data['data'][$key]['backgroundColor'] = "#00a65a";
+					#$data['data'][$key]['backgroundColor'] = "#00a65a";
+					$data['data'][$key]['backgroundColor'] = $this->rand_color();
 				}else {
 					$data['data'][$key]['title'] = "";
 					$data['data'][$key]['start'] = "";
@@ -51,5 +52,9 @@ class Calendar extends CI_Controller
 		} else {
 			redirect(base_url(), 'refresh');
 		}
+	}
+
+	public function rand_color() {
+		return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
 	}
 }
