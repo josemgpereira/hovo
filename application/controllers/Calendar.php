@@ -29,6 +29,14 @@ class Calendar extends CI_Controller
 	{
 		if ($this->session->userdata('user_login_access') != False) {
 			$data['result'] = $this->db->get("emp_leave")->result();
+
+			if (empty($data['result'])){
+				$data['data'][0]['title'] = "";
+				$data['data'][0]['start'] = "";
+				$data['data'][0]['end'] = "";
+				$data['data'][0]['backgroundColor'] = "";
+			}
+
 			foreach ($data['result'] as $key => $value) {
 				if($value->leave_status == 'Approve'){
 					$data['name'] = $this->calendar_model->nameSelectByID($value->em_id);
