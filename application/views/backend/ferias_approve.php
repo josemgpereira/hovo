@@ -103,7 +103,7 @@
                                            <?php if($value->leave_status =='Approve'){ ?>
                                            
                                              <?php } elseif($value->leave_status =='Not Approve'){ ?>
-                                            <a href="" title="Aprovar" class="btn btn-sm btn-info waves-effect waves-light Status" data-employeeId=<?php echo $value->em_id; ?>  data-id="<?php echo $value->id; ?>" data-value="Approve" data-duration="<?php echo $value->leave_duration; ?>" data-type="<?php echo $value->typeid; ?>">Aprovar</a>
+                                            <a href="" title="Aprovar" class="btn btn-sm btn-info waves-effect waves-light Status" data-employeeId=<?php echo $value->em_id; ?>  data-id="<?php echo $value->id; ?>" data-value="Approve" data-duration="<?php echo $value->leave_duration; ?>" data-type="<?php echo $value->typeid; ?>" data-depid="<?php echo $value->dep_id; ?>" data-startdate="<?php echo $value->start_date; ?>" data-enddate="<?php echo $value->end_date; ?>">Aprovar</a>
                                             <a href="" title="Rejeitar" class="btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $value->id; ?>" data-value="Rejected" >Rejeitar</a>
                                             <br> 
 
@@ -304,7 +304,10 @@
               'lid': $(this).attr('data-id'),
               'lvalue': $(this).attr('data-value'),
               'duration': $(this).attr('data-duration'),
-              'type': $(this).attr('data-type')
+              'type': $(this).attr('data-type'),
+			  'depid': $(this).attr('data-depid'),
+			  'startdate': $(this).attr('data-startdate'),
+			  'enddate': $(this).attr('data-enddate')
           },
           success: function(response) {
             // console.log(response);

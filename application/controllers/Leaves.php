@@ -195,8 +195,24 @@ class Leaves extends CI_Controller
 			$value = $this->input->post('lvalue');
 			$duration = $this->input->post('duration');
 			$type = $this->input->post('type');
+			$depid = $this->input->post('depid');
+			$startdate = $this->input->post('startdate');
+			$enddate = $this->input->post('enddate');
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters();
+
+			if ($value == 'Approve') {
+				$numempleave = $this->ferias_model->GetNumEmpLeave($startdate,$enddate,$depid);
+				$numempleave = $numempleave->numempleave;
+				$numempdep = $this->ferias_model->GetNumEmpDep($depid);
+				$numempdep = $numempdep->numempdep;
+				$minempdep = $this->ferias_model->GetMinEmpDep($depid);
+				$minempdep = $minempdep->min_emp;
+
+				if(($numempdep - $numempleave) <= $minempdep){
+					exit("Dias já reservados");
+				}
+			}
 
 			$data = array();
 			$data = array(

@@ -36,5 +36,26 @@
 		return $result;
 	}
 
+	public function GetNumEmpLeave($start_date,$end_date,$dep_id){
+		$sql = "SELECT COUNT(em_id) AS numempleave FROM emp_leave WHERE start_date<='$start_date' and end_date >='$end_date' and dep_id='$dep_id' and leave_status='Approve'";
+		$query = $this->db->query($sql);
+		$result = $query->row();
+		return $result;
+	}
+
+	public function GetNumEmpDep($dep_id){
+		$sql = "SELECT COUNT(em_id) AS numempdep FROM employee WHERE dep_id='$dep_id'";
+		$query = $this->db->query($sql);
+		$result = $query->row();
+		return $result;
+	}
+
+	public function GetMinEmpDep($dep_id){
+		$sql = "SELECT min_emp FROM department WHERE id='$dep_id'";
+		$query = $this->db->query($sql);
+		$result = $query->row();
+		return $result;
+		}
+
     }
 ?>    
