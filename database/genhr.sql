@@ -339,10 +339,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `em_id`, `em_code`, `des_id`, `dep_id`, `first_name`, `last_name`, `em_email`, `em_password`, `em_role`, `em_address`, `status`, `em_gender`, `em_phone`, `em_birthday`, `em_blood_group`, `em_joining_date`, `em_contact_end`, `em_image`, `em_nid`) VALUES
-(10, 'Soy1332', '99', 0, 0, 'Dir', 'Soyeb', 'nawjeshbd@gmail.com', '996a3778768a2c3ea7c5b586fdfc92051dfdd39c', 'SUPER ADMIN', NULL, 'ACTIVE', 'Female', '01723177901', '2017-12-26', 'B+', '2018-01-06', '2018-01-06', 'Soy1332.jpg', '132154566556'),
-(36, 'Doe1753', '123456', 12, 2, 'Jhon', 'Doe', 'admin@gmail.com', 'cd5ea73cd58f827fa78eef7197b8ee606c99b2e6', 'ADMIN', NULL, 'ACTIVE', 'Male', 'admin123456', '2019-02-13', 'O+', '2019-02-15', '2019-02-22', 'Doe1753.jpg', '01253568955555'),
-(37, 'Doe1754', '123444', 12, 2, 'Jhon', 'Doe', 'employee@gmail.com', 'cd5ea73cd58f827fa78eef7197b8ee606c99b2e6', 'EMPLOYEE', NULL, 'ACTIVE', 'Male', 'abc123456', '2019-02-13', 'O+', '2019-02-15', '2019-02-22', 'Doe1753.jpg', '01253568955555');
-
+(36, 'Doe1753', '123456', 12, 2, 'Jhon', 'Doe', 'admin@gmail.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', 'ADMIN', NULL, 'ACTIVE', 'Male', '111111111', '2019-02-13', 'O+', '2019-02-15', '2019-02-22', 'Doe1753.jpg', '01253568955555');
 -- --------------------------------------------------------
 
 --
