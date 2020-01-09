@@ -80,8 +80,8 @@
 										}
 
 
-										$daysDenom = ($days == 1) ? " day " : " days ";
-										$hourDenom = ($hour == 1) ? " hour " : " hours ";
+										$daysDenom = ($days == 1) ? " dia" : " dias";
+										$hourDenom = ($hour == 1) ? " hora" : " horas";
 
 										if($days > 0) {
 											echo $days . $daysDenom;
