@@ -212,16 +212,19 @@ CREATE TABLE `department` (
   `dep_name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE department ADD min_emp int(11);
+ALTER TABLE department MODIFY COLUMN min_emp int(11) DEFAULT '0';
+
 --
 -- Dumping data for table `department`
 --
 
-INSERT INTO `department` (`id`, `dep_name`) VALUES
-(2, 'Administration'),
-(3, 'Finance, HR, & Admininstration'),
-(4, 'Research'),
-(5, 'Information Technology'),
-(6, 'Support');
+INSERT INTO `department` (`id`, `dep_name`, `min_emp`) VALUES
+(2, 'Administration', 0),
+(3, 'Finance, HR, & Admininstration', 0),
+(4, 'Research', 0),
+(5, 'Information Technology', 0),
+(6, 'Support', 0);
 
 -- --------------------------------------------------------
 
@@ -1332,8 +1335,7 @@ COMMIT;
 
 CREATE TABLE `leaves` (`id` int(14) NOT NULL AUTO_INCREMENT,`emp_id` varchar(64) DEFAULT NULL,`days` varchar(256) DEFAULT NULL, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ALTER TABLE emp_leave ADD dep_id int(11);
-ALTER TABLE department ADD min_emp int(11);
-ALTER TABLE department MODIFY COLUMN min_emp int(11) DEFAULT '0';
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
