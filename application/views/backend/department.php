@@ -122,7 +122,7 @@
 												<td><?php echo $value->min_emp;?></td>
                                                 <td class="jsgrid-align-center ">
                                                     <a href="<?php echo base_url();?>organization/dep_edit/<?php echo $value->id;?>" title="Editar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
-                                                    <a onclick="return confirm('Tem certeza de que deseja apagar este departamento?')" href="<?php echo base_url();?>organization/Delete_dep/<?php echo $value->id;?>" title="Apagar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
+                                                    <a onclick="return confirm('Tem certeza de que deseja eliminar este departamento?')" href="<?php echo base_url();?>organization/Delete_dep/<?php echo $value->id;?>" title="Eliminar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php }?>

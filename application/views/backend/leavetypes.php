@@ -54,7 +54,7 @@
                                         <td><?php echo $value->leave_day ?></td>
                                         <td class="jsgrid-align-center ">
                                             <a href="" title="Editar" <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?> hidden <?php } ?> class="btn btn-sm btn-info waves-effect waves-light leavetype" data-id="<?php echo $value->type_id; ?>"><i class="fa fa-pencil-square-o"></i></a>
-											<a onclick="return confirm('Tem certeza de que deseja apagar este tipo de licença?')" href="<?php echo base_url();?>leave/LeavetypeDelete/<?php echo $value->type_id;?>" title="Apagar" <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?> hidden <?php } ?> class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
+											<a onclick="return confirm('Tem certeza de que deseja eliminar este tipo de licença?')" href="<?php echo base_url();?>leave/LeavetypeDelete/<?php echo $value->type_id;?>" title="Eliminar" <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?> hidden <?php } ?> class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
 										</td>
                                     </tr>
                                     <?php endforeach; ?>

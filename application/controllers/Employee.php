@@ -1109,4 +1109,15 @@ class Employee extends CI_Controller
 		$data['invalidem'] = $this->employee_model->getInvalidUser();
 		$this->load->view('backend/invalid_user', $data);
 	}
+
+	public function delete_employee($em_id){
+		if($this->session->userdata('user_login_access') != False) {
+			$this->employee_model->employee_delete($em_id);
+			$this->session->set_flashdata('delsuccess', 'Eliminado com sucesso');
+			redirect('employee/Employees');
+		}
+		else{
+			redirect(base_url() , 'refresh');
+		}
+	}
 }

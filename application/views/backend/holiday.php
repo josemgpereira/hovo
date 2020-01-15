@@ -114,7 +114,7 @@ https://www.patchesoft.com/fullcalendar-with-php-and-codeigniter/
                                                 <td><?php echo $value->year; ?></td>
                                                 <td class="jsgrid-align-center ">
                                                     <a href="" title="Editar" <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?> hidden <?php } ?> class="btn btn-sm btn-info waves-effect waves-light holiday" data-id="<?php echo $value->id; ?>"><i class="fa fa-pencil-square-o"></i></a>
-													<a onclick="return confirm('Tem certeza de que deseja apagar este feriado?')" href="<?php echo base_url();?>leave/HOLIvalueDelete/<?php echo $value->id;?>" title="Apagar" <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?> hidden <?php } ?> class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
+													<a onclick="return confirm('Tem certeza de que deseja eliminar este feriado?')" href="<?php echo base_url();?>leave/HOLIvalueDelete/<?php echo $value->id;?>" title="Eliminar" <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?> hidden <?php } ?> class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
 												</td>
                                             </tr>
                                             <?php endforeach; ?>

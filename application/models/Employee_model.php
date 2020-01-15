@@ -323,6 +323,10 @@
 		$this->db->update('leaves',$data);
 	}
 
+	public function employee_delete($em_id){
+		$this->db->delete('employee',array('em_id' => $em_id ));
+	}
+
 
     }
 ?>
