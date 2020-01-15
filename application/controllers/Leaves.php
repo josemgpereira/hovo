@@ -198,6 +198,7 @@ class Leaves extends CI_Controller
 			$depid = $this->input->post('depid');
 			$startdate = $this->input->post('startdate');
 			$enddate = $this->input->post('enddate');
+			$rejectreason = $this->input->post('rejectreason');
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters();
 
@@ -215,9 +216,7 @@ class Leaves extends CI_Controller
 			}
 
 			$data = array();
-			$data = array(
-				'leave_status' => $value
-			);
+			$data = array('leave_status' => $value, 'reject_reason' => $rejectreason);
 
 			$leaveleftdays = $this->LeaveLeftDays($employeeId);
 			$leavelefthour = $leaveleftdays * 8;

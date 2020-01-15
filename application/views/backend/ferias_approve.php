@@ -104,8 +104,9 @@
                                            
                                              <?php } elseif($value->leave_status =='Not Approve'){ ?>
                                             <a href="" title="Aprovar" class="btn btn-sm btn-info waves-effect waves-light Status" data-employeeId=<?php echo $value->em_id; ?>  data-id="<?php echo $value->id; ?>" data-value="Approve" data-duration="<?php echo $value->leave_duration; ?>" data-type="<?php echo $value->typeid; ?>" data-depid="<?php echo $value->dep_id; ?>" data-startdate="<?php echo $value->start_date; ?>" data-enddate="<?php echo $value->end_date; ?>">Aprovar</a>
-                                            <a href="" title="Rejeitar" class="btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $value->id; ?>" data-value="Rejected" >Rejeitar</a>
-                                            <br> 
+                                            <!--<a href="" title="Rejeitar" class="btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $value->id; ?>" data-value="Rejected" >Rejeitar</a>-->
+											<a href="" title="Rejeitar" class="btn btn-sm btn-info waves-effect waves-light open-AddRejectReason" data-id = "<?php echo $value->id; ?>" data-value="Rejected" data-toggle="modal" data-target="#rejectreasonmodel" data-whatever="@getbootstrap">Rejeitar</a>
+											<br>
 
                                             <?php } elseif($value->leave_status =='Rejected'){ ?>
                                             <?php } ?>
@@ -122,7 +123,8 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="appmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+
+		<div class="modal fade" id="appmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content ">
                             <div class="modal-header">
@@ -238,6 +240,31 @@
                     </div>
                 </div>
 
+		<div class="modal fade" id="rejectreasonmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content ">
+					<div class="modal-header">
+						<h4 class="modal-title" id="exampleModalLabel1">Motivo de Rejeição</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<form method="post" action="approveLeaveStatus" id="leaveapply" enctype="multipart/form-data">
+						<div class="modal-body">
+							<div class="form-group">
+								<label class="control-label">Motivo</label>
+								<textarea class="form-control" name="rejectreason" id="message-text1" required></textarea>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" id="lid" name="lid" value="">
+							<input type="hidden" id="lvalue" name="lvalue" value="">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<button type="submit" class="btn btn-primary">Submeter</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
 
 
 <script>
@@ -319,6 +346,15 @@
           }
       });
   });           
+</script>
+
+<script>
+	$(document).on("click", ".open-AddRejectReason", function () {
+		var emId = $(this).data('id');
+		var emValue = $(this).data('value');
+		$(".modal-footer #lid").val(emId);
+		$(".modal-footer #lvalue").val(emValue);
+	});
 </script>
 
 <script type="text/javascript">
