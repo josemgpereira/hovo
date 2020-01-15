@@ -168,11 +168,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" id="hourlyFix">Data</label>
-                                    <input type="text" name="startdate" class="form-control mydatetimepickerFull" id="recipient-name1" required>
+                                    <input type="text" name="startdate" class="form-control mydatetimepickerFull" id="startdate" required>
                                 </div>
                                 <div class="form-group" id="enddate" style="display:none">
                                     <label class="control-label">Data Final</label>
-                                    <input type="text" name="enddate" class="form-control mydatetimepickerFull" id="recipient-name1">
+                                    <input type="text" name="enddate" class="form-control mydatetimepickerFull" id="enddateinput">
                                 </div>
 
                                 <div class="form-group" id="hourAmount">
@@ -228,7 +228,11 @@
                                     $('#appmodel').on('hidden.bs.modal', function () {
                                         location.reload();
                                     });
-                                });                                                          
+                                });
+								$('#startdate').change(function() {
+									var startdate = $("#startdate").val();
+									$('#enddateinput').val(startdate);
+								});
                             </script>
                             <div class="modal-footer">
                                 <input type="hidden" name="id" class="form-control" id="recipient-name1" required> 

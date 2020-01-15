@@ -148,11 +148,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label" id="hourlyFix">Data</label>
-                                <input type="date" name="startdate" class="form-control" id="recipient-name1" required>
+                                <input type="date" name="startdate" class="form-control" id="startdate" required>
                             </div>
                             <div class="form-group" id="enddate" style="display:none">
                                 <label class="control-label">Data Final</label>
-                                <input type="date" name="enddate" class="form-control" id="recipient-name1">
+                                <input type="date" name="enddate" class="form-control" id="enddateinput">
                             </div>
 
                             <div class="form-group" id="hourAmount">
@@ -199,7 +199,11 @@
                                     $('#hourAmount').hide();
                                 }
                             });
-                        }); 
+                        });
+						$('#startdate').change(function() {
+							var startdate = $("#startdate").val();
+							$('#enddateinput').val(startdate);
+						});
                         </script>
                         <div class="modal-footer">
                             <input type="hidden" name="id" class="form-control" id="recipient-name1" required>
