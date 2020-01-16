@@ -24,7 +24,7 @@
                 <!-- Row -->
                 <div class="row">
                     <!-- Column -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6" id="draggableemployee">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-row">
@@ -42,7 +42,7 @@
                     </div>
                     <!-- Column -->
                     <!-- Column -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6" id="draggableleave">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-row">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-					<div class="col-lg-3 col-md-6">
+					<div class="col-lg-3 col-md-6"id="draggablecalendar">
 						<div class="card">
 							<div class="card-body">
 								<div class="d-flex flex-row">
@@ -106,6 +106,9 @@
             console.error();
           }
       });
-  });			
-</script>                                               
+  });
+  $('#draggableemployee').draggable();
+  $('#draggableleave').draggable();
+  $('#draggablecalendar').draggable();
+</script>
 <?php $this->load->view('backend/footer'); ?>
