@@ -40,6 +40,7 @@
                                         <th>Data Final</th>
                                         <th>Duração</th>
                                         <th>Estado</th>
+										<th>Motivo de Rejeição</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -50,6 +51,7 @@
                                     <th>Data Final</th>
                                     <th>Duração</th>
                                     <th>Estado</th>
+									<th>Motivo de Rejeição</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
@@ -91,6 +93,7 @@
 										?>
 										</td>
                                         <td><?php echo $value->leave_status; ?></td>
+										<td><?php echo $value->reject_reason; ?></td>
                                         <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
                                         
                                         <?php } else { ?>
