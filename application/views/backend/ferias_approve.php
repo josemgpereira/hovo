@@ -168,11 +168,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" id="hourlyFix">Data</label>
-                                    <input type="text" name="startdate" class="form-control mydatetimepickerFull" id="startdate" required>
+                                    <input type="date" name="startdate" class="form-control" id="startdate" required>
                                 </div>
                                 <div class="form-group" id="enddate" style="display:none">
                                     <label class="control-label">Data Final</label>
-                                    <input type="text" name="enddate" class="form-control mydatetimepickerFull" id="enddateinput">
+                                    <input type="date" name="enddate" class="form-control" id="enddateinput">
                                 </div>
 
                                 <div class="form-group" id="hourAmount">
