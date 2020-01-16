@@ -291,5 +291,18 @@
         $query = $this->db->query($sql);
         return $query->row();
     }
+
+    public function allLeaveAplicationHistoric(){
+		$sql = "SELECT `emp_leave`.*,
+       `employee`.`em_id`,`first_name`,`last_name`,`em_code`,
+       `leave_types`.`type_id`,`name`
+		FROM `emp_leave`
+		LEFT JOIN `employee` ON `emp_leave`.`em_id`=`employee`.`em_id`
+		LEFT JOIN `leave_types` ON `emp_leave`.`typeid`=`leave_types`.`type_id`";
+		$query=$this->db->query($sql);
+		$result = $query->result();
+		return $result;
+	}
+
     }
 ?>    

@@ -322,4 +322,30 @@ class Leaves extends CI_Controller
 		}
 		return $days;
 	}
+
+	public function emphistoric()
+	{
+		if ($this->session->userdata('user_login_access') != False) {
+			$emid = $this->session->userdata('user_login_id');
+			$data['employee'] = $this->employee_model->emselectByID($emid);
+			$data['leavetypes'] = $this->leave_model->GetleavetypeInfo();
+			$data['application'] = $this->leave_model->GetallApplication($emid);
+			$this->load->view('backend/employee_historic', $data);
+		} else {
+			redirect(base_url(), 'refresh');
+		}
+	}
+
+	public function historic()
+	{
+		if ($this->session->userdata('user_login_access') != False) {
+
+			$data['employee'] = $this->employee_model->emselectactive(); // gets active employee details
+			$data['leavetypes'] = $this->leave_model->GetleavetypeInfo();
+			$data['application'] = $this->leave_model->allLeaveAplicationHistoric();
+			$this->load->view('backend/historic', $data);
+		} else {
+			redirect(base_url(), 'refresh');
+		}
+	}
 }
