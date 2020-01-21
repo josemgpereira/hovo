@@ -103,10 +103,9 @@
                                            <?php if($value->leave_status =='Approve'){ ?>
                                            
                                              <?php } elseif($value->leave_status =='Not Approve'){ ?>
-                                            <a href="" title="Aprovar" class="btn btn-sm btn-info waves-effect waves-light Status" data-employeeId=<?php echo $value->em_id; ?>  data-id="<?php echo $value->id; ?>" data-value="Approve" data-duration="<?php echo $value->leave_duration; ?>" data-type="<?php echo $value->typeid; ?>" data-depid="<?php echo $value->dep_id; ?>" data-startdate="<?php echo $value->start_date; ?>" data-enddate="<?php echo $value->end_date; ?>">Aprovar</a>
+                                            <a href="" title="Aprovar" class="btn btn-sm btn-info waves-effect waves-light Status" data-employeeId="<?php echo $value->em_id; ?>" data-id="<?php echo $value->id; ?>" data-value="Approve" data-duration="<?php echo $value->leave_duration; ?>" data-type="<?php echo $value->typeid; ?>" data-depid="<?php echo $value->dep_id; ?>" data-startdate="<?php echo $value->start_date; ?>" data-enddate="<?php echo $value->end_date; ?>">Aprovar</a>
                                             <!--<a href="" title="Rejeitar" class="btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $value->id; ?>" data-value="Rejected" >Rejeitar</a>-->
-											<a href="" title="Rejeitar" class="btn btn-sm btn-info waves-effect waves-light open-AddRejectReason" data-id = "<?php echo $value->id; ?>" data-value="Rejected" data-toggle="modal" data-target="#rejectreasonmodel" data-whatever="@getbootstrap">Rejeitar</a>
-											<br>
+											<a href="" title="Rejeitar" class="btn btn-sm btn-info waves-effect waves-light open-AddRejectReason" data-empid="<?php echo $value->em_id; ?>" data-id="<?php echo $value->id; ?>" data-value="Rejected" data-startdate="<?php echo $value->start_date; ?>" data-enddate="<?php echo $value->end_date; ?>" data-toggle="modal" data-target="#rejectreasonmodel" data-whatever="@getbootstrap">Rejeitar</a>
 
                                             <?php } elseif($value->leave_status =='Rejected'){ ?>
                                             <?php } ?>
@@ -261,6 +260,9 @@
 						<div class="modal-footer">
 							<input type="hidden" id="lid" name="lid" value="">
 							<input type="hidden" id="lvalue" name="lvalue" value="">
+							<input type="hidden" id="employeeId" name="employeeId" value="">
+							<input type="hidden" id="startdate" name="startdate" value="">
+							<input type="hidden" id="enddate" name="enddate" value="">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 							<button type="submit" class="btn btn-primary">Submeter</button>
 						</div>
@@ -354,10 +356,16 @@
 
 <script>
 	$(document).on("click", ".open-AddRejectReason", function () {
+		var employeeId = $(this).data('empid');
 		var emId = $(this).data('id');
 		var emValue = $(this).data('value');
+		var startdate = $(this).data('startdate');
+		var enddate = $(this).data('enddate');
+		$(".modal-footer #employeeId").val(employeeId);
 		$(".modal-footer #lid").val(emId);
 		$(".modal-footer #lvalue").val(emValue);
+		$(".modal-footer #startdate").val(startdate);
+		$(".modal-footer #enddate").val(enddate);
 	});
 </script>
 

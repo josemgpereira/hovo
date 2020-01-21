@@ -202,6 +202,8 @@ class Leaves extends CI_Controller
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters();
 
+			$email = ($this->employee_model->getEmpEmail($employeeId))->em_email;
+
 			if ($value == 'Approve') {
 				$numempleave = $this->ferias_model->GetNumEmpLeave($startdate,$enddate,$depid);
 				$numempleave = $numempleave->numempleave;
@@ -225,6 +227,7 @@ class Leaves extends CI_Controller
 				echo "Saldo Insuficiente";
 			} else {
 				$success = $this->leave_model->updateAplicationAsResolved($id, $data);
+				$this->send_mail($email, $value, $startdate, $enddate, $rejectreason);
 				if ($value == 'Approve') {
 					$dias = $this->ferias_model->Getempdays($employeeId);
 					$dias = $dias->days;
@@ -346,6 +349,30 @@ class Leaves extends CI_Controller
 			$this->load->view('backend/historic', $data);
 		} else {
 			redirect(base_url(), 'refresh');
+		}
+	}
+
+	public function send_mail($email,$status,$startdate,$enddate,$rejectreason) {
+		$this->load->config('email');
+		$this->load->library('email');
+
+		$from = $this->config->item('smtp_user');
+		$to = $email;
+		$subject = 'Aprovação de Férias';
+		$data = array('email'=>$email, 'status'=>$status, 'startdate'=>$startdate, 'enddate'=>$enddate, 'rejectreason'=>$rejectreason);
+		$message = $this->load->view('backend/email_template.php',$data,TRUE);
+
+		$this->email->set_newline("\r\n");
+		$this->email->from($from, 'HolyManager');
+		$this->email->to($to);
+		$this->email->subject($subject);
+		$this->email->message($message);
+
+		if ($this->email->send()) {
+			$this->session->set_flashdata('feedback','E-mail enviado com sucesso.');
+		} else {
+			//show_error($this->email->print_debugger());
+			$this->session->set_flashdata("feedback","E-mail não enviado com sucesso.");
 		}
 	}
 }
