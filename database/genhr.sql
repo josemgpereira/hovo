@@ -813,7 +813,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `sitelogo`, `sitetitle`, `description`, `copyright`, `contact`, `currency`, `symbol`, `system_email`, `address`, `address2`) VALUES
-(1, 'HRPAYROLL11.png', 'Development Research Initiative (dRi)', 'Prochesta Foundation aims at the upliftment & betterment of people living below the poverty line.', 'GenIT Bangladesh', '017112233445', 'BDT', '$', 'contact@dri-int.org', 'House 39/7 (First Floor) Hazi Ali Hossain Road', 'Dhaka');
+(1, 'HRPAYROLL11.png', 'Hovo Comunicatico', 'Prochesta Foundation aims at the upliftment & betterment of people living below the poverty line.', 'GenIT Bangladesh', '017112233445', 'BDT', '$', 'contact@dri-int.org', 'House 39/7 (First Floor) Hazi Ali Hossain Road', 'Dhaka');
 
 -- --------------------------------------------------------
 
