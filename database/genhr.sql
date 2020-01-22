@@ -267,8 +267,7 @@ INSERT INTO `designation` (`id`, `des_name`) VALUES
 (10, 'Research Assistant'),
 (11, 'Sr. Office Assistant'),
 (12, 'Office Assistant'),
-(13, 'IT Analyst'),
-(14, 'Cook');
+(13, 'IT Analyst');
 
 -- --------------------------------------------------------
 
