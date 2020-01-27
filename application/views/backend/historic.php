@@ -51,9 +51,9 @@
                                     <?php foreach($application as $value): ?>
                                     <tr style="vertical-align:top">
                                         <td><span><?php echo $value->first_name.' '.$value->last_name ?></span></td>
-                                        <td><?php echo date('jS \of F Y',strtotime($value->apply_date)); ?></td>
-                                        <td><?php echo $value->start_date; ?></td>
-                                        <td><?php echo $value->end_date; ?></td>
+                                        <td><?php echo date('d-m-Y',strtotime($value->apply_date)); ?></td>
+                                        <td><?php echo date('d-m-Y',strtotime($value->start_date)); ?></td>
+                                        <td><?php echo date('d-m-Y',strtotime($value->end_date)); ?></td>
                                         <td>
                                             
                                             <!-- Duration filtering -->
