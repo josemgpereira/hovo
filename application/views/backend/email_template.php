@@ -24,7 +24,7 @@
 		<b>Data Inicial:</b> <?php echo $startdate; ?><br>
 		<b>Data Final:</b> <?php echo $enddate; ?><br>
 		<?php if($status=='Approve'){ ?>
-		<b>Estado:</b><span class="status"> Aprovado</span>Aprovado<br>
+		<b>Estado:</b><span class="status"> Aprovado</span><br>
 		<?php } else { ?>
 		<b>Estado:</b><span class="status"> Rejeitado</span><br>
 		<b>Motivo de Rejeição:</b> <?php echo $rejectreason; ?>

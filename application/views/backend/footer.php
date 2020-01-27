@@ -150,7 +150,7 @@
     $('#example23').DataTable({
         dom: 'Bfrtip',
         buttons: [
-            'csv', 'excel', 'pdf', 'print'
+            'excel', 'pdf'
         ]
     });
     $('#single-input').clockpicker({

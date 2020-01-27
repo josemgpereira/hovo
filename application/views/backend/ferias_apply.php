@@ -92,7 +92,7 @@
 										}
 										?>
 										</td>
-                                        <td><?php echo $value->leave_status; ?></td>
+										<td><?php if($value->leave_status=='Approve') echo 'Aprovado'; elseif($value->leave_status=='Rejected') echo 'Rejeitado'; else echo 'Não Aprovado'; ?></td>
 										<td><?php echo $value->reject_reason; ?></td>
                                         <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
                                         

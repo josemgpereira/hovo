@@ -37,7 +37,6 @@
                                                 <th>Email</th>
                                                 <th>Telefone</th>
                                                 <th>Tipo</th>
-                                                <th>Estado</th>
 												<th>Ação</th>
                                             </tr>
                                         </thead>
@@ -47,7 +46,6 @@
                                                 <th>Email</th>
                                                 <th>Telefone</th>
                                                 <th>Tipo</th>
-												<th>Estado</th>
                                                 <th>Ação</th>
                                             </tr>
                                         </tfoot>
@@ -57,8 +55,7 @@
                                                 <td title="<?php echo $value->first_name .' '.$value->last_name; ?>"><?php echo $value->first_name .' '.$value->last_name; ?></td>
                                                 <td><?php echo $value->em_email; ?></td>
                                                 <td><?php echo $value->em_phone; ?></td>
-                                                <td><?php echo $value->em_role; ?></td>
-												<td><?php echo $value->status; ?></td>
+												<td><?php if($value->em_role=='ADMIN') echo 'Administrador'; else echo 'Funcionário'; ?></td>
                                                 <td class="jsgrid-align-center ">
                                                     <a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($value->em_id); ?>" title="Editar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
 													<a onclick="return confirm('Tem certeza de que deseja eliminar este funcionário?')" href="<?php echo base_url();?>employee/delete_employee/<?php echo $value->em_id;?>" title="Eliminar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
@@ -78,7 +75,7 @@
         "aaSorting": [[1,'asc']],
         dom: 'Bfrtip',
         buttons: [
-            'csv', 'excel', 'pdf', 'print'
+            'excel', 'pdf'
         ]
     });
 </script>
