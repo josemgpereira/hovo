@@ -41,6 +41,7 @@ date_default_timezone_set('Asia/Dhaka');
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/fullcalendar.min.css" />
 	<script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/fullcalendar.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/pt.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/calendar/jquery-ui.min.js"></script>
 </head>
 

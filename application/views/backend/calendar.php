@@ -41,14 +41,16 @@
 			header    : {
 				left  : 'prev,next today',
 				center: 'title',
-				right : 'month,agendaWeek,agendaDay'
+				//right : 'month,agendaWeek,agendaDay'
 			},
+			/*
 			buttonText: {
 				today: 'today',
 				month: 'month',
 				week : 'week',
 				day  : 'day'
 			},
+			 */
 			weekends: false,
 			events    : events
 		})
