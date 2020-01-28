@@ -38,9 +38,9 @@ date_default_timezone_set('Asia/Dhaka');
      <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
     <link href="<?php echo base_url(); ?>assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />   
     <!--<link href="<?php echo base_url(); ?>assets/plugins/calendar/dist/fullcalendar.css" rel="stylesheet" type="text/css" />-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/fullcalendar.min.css" />
+	<script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/fullcalendar.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/calendar/jquery-ui.min.js"></script>
 </head>
 
