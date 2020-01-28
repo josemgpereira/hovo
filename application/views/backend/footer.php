@@ -148,7 +148,8 @@
         todayHighlight: true
     });        
     $('#example23').DataTable({
-        dom: 'Bfrtip',
+        "aaSorting": [[1,'asc']],
+		dom: 'Bfrtp',
         buttons: [
             'excel', 'pdf'
         ]

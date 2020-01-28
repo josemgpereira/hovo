@@ -72,8 +72,8 @@
 <?php $this->load->view('backend/footer'); ?>
 <script>
     $('#employees123').DataTable({
-        "aaSorting": [[1,'asc']],
-        dom: 'Bfrtip',
+        "aaSorting": [[0,'asc']],
+        dom: 'Bfrtp',
         buttons: [
             'excel', 'pdf'
         ]
