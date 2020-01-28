@@ -72,6 +72,9 @@
 <?php $this->load->view('backend/footer'); ?>
 <script>
     $('#employees123').DataTable({
+        "language": {
+            "url": "<?php echo base_url(); ?>assets/dataTables/Portuguese.json"
+        },
         "aaSorting": [[0,'asc']],
         dom: 'Bfrtp',
         buttons: [

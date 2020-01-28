@@ -148,6 +148,9 @@
         todayHighlight: true
     });        
     $('#example23').DataTable({
+        "language": {
+            "url": "<?php echo base_url(); ?>assets/dataTables/Portuguese.json"
+        },
         "aaSorting": [[1,'asc']],
 		dom: 'Bfrtp',
         buttons: [
