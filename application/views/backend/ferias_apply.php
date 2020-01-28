@@ -165,7 +165,7 @@
                                     <option value="1">Uma Hora</option>
                                     <option value="2">Duas Horas</option>
                                     <option value="3">Três Horas</option>
-                                    <option value="4">Quatro Houras</option>
+                                    <option value="4">Quatro Horas</option>
                                     <option value="5">Cinco Horas</option>
                                     <option value="6">Seis Horas</option>
                                     <option value="7">Sete Horas</option>
