@@ -163,6 +163,7 @@ class Employee extends CI_Controller
 								$success = $this->employee_model->AddLeaves($leaves);
 								#$this->confirm_mail_send($email,$pass_hash);
 								#$this->session->set_flashdata('feedback','Successfully Created');
+								$this->send_mail($email, $contact);
 								echo "Adicionado com sucesso";
 								$this->session->set_flashdata('post', null);
 								//redirect(base_url().'employee/Employees','refresh');
@@ -204,6 +205,7 @@ class Employee extends CI_Controller
 							);
 							$success = $this->employee_model->AddLeaves($leaves);
 							#$this->confirm_mail_send($email,$pass_hash);
+							$this->send_mail($email, $contact);
 							echo "Adicionado com sucesso";
 							$this->session->set_flashdata('post', null);
 							//redirect(base_url().'employee/Employees','refresh');
@@ -1113,11 +1115,36 @@ class Employee extends CI_Controller
 	public function delete_employee($em_id){
 		if($this->session->userdata('user_login_access') != False) {
 			$this->employee_model->employee_delete($em_id);
+			$this->employee_model->leaves_delete($em_id);
 			$this->session->set_flashdata('delsuccess', 'Eliminado com sucesso');
 			redirect('employee/Employees');
 		}
 		else{
 			redirect(base_url() , 'refresh');
+		}
+	}
+
+	public function send_mail($email,$password) {
+		$this->load->config('email');
+		$this->load->library('email');
+
+		$from = $this->config->item('smtp_user');
+		$to = $email;
+		$subject = 'Bem-vindo ao HolyManager';
+		$data = array('email'=>$email, 'password'=>$password);
+		$message = $this->load->view('backend/email_new_user_template.php',$data,TRUE);
+
+		$this->email->set_newline("\r\n");
+		$this->email->from($from, 'HolyManager');
+		$this->email->to($to);
+		$this->email->subject($subject);
+		$this->email->message($message);
+
+		if ($this->email->send()) {
+			$this->session->set_flashdata('feedback','E-mail enviado com sucesso.');
+		} else {
+			//show_error($this->email->print_debugger());
+			$this->session->set_flashdata("feedback","E-mail não enviado com sucesso.");
 		}
 	}
 }

@@ -327,6 +327,10 @@
 		$this->db->delete('employee',array('em_id' => $em_id ));
 	}
 
+	public function leaves_delete($em_id){
+		$this->db->delete('leaves',array('emp_id' => $em_id ));
+	}
+
 	public function getEmpEmail($em_id){
 		$sql = "SELECT em_email FROM employee WHERE em_id='$em_id'";
 		$query = $this->db->query($sql);

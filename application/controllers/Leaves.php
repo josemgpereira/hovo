@@ -360,7 +360,7 @@ class Leaves extends CI_Controller
 		$to = $email;
 		$subject = 'Aprovação de Férias';
 		$data = array('email'=>$email, 'status'=>$status, 'startdate'=>$startdate, 'enddate'=>$enddate, 'rejectreason'=>$rejectreason);
-		$message = $this->load->view('backend/email_template.php',$data,TRUE);
+		$message = $this->load->view('backend/email_leaves_approve_template.php',$data,TRUE);
 
 		$this->email->set_newline("\r\n");
 		$this->email->from($from, 'HolyManager');
