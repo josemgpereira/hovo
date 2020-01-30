@@ -212,6 +212,10 @@ class Leaves extends CI_Controller
 				$minempdep = $this->ferias_model->GetMinEmpDep($depid);
 				$minempdep = $minempdep->min_emp;
 
+				if(($numempdep) <= $minempdep){
+					exit("Mínimo de funcionários insuficiente");
+				}
+
 				if(($numempdep - $numempleave) <= $minempdep){
 					exit("Dias já reservados");
 				}
@@ -227,7 +231,8 @@ class Leaves extends CI_Controller
 				echo "Saldo Insuficiente";
 			} else {
 				$success = $this->leave_model->updateAplicationAsResolved($id, $data);
-				$this->send_mail($email, $value, $startdate, $enddate, $rejectreason);
+				$email_notif = ($this->employee_model->getEmpEmailNotif($employeeId))->email_notif;
+				if($email_notif == 1) $this->send_mail($email, $value, $startdate, $enddate, $rejectreason);
 				if ($value == 'Approve') {
 					$dias = $this->ferias_model->Getempdays($employeeId);
 					$dias = $dias->days;
