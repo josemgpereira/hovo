@@ -1147,4 +1147,20 @@ class Employee extends CI_Controller
 			$this->session->set_flashdata("feedback","E-mail não enviado com sucesso.");
 		}
 	}
+
+	public function updateEmailNotifications(){
+		if ($this->session->userdata('user_login_access') != False) {
+			$id = $this->input->post('emid');
+			if(isset($_POST['emailNotifications'])){
+				$emailNotifications = 1;
+			}else{
+				$emailNotifications = 0;
+			}
+			$data = array('email_notif' => $emailNotifications);
+			$success = $this->employee_model->updateEmailNotifications($id, $data);
+			echo "Atualizado com sucesso";
+		} else {
+			redirect(base_url(), 'refresh');
+		}
+	}
 }

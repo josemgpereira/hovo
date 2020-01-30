@@ -24,7 +24,7 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs profile-tab" role="tablist">
 						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home" role="tab"
-												style="font-size: 14px;">Informação pessoal</a></li>
+												style="font-size: 14px;">Informação Pessoal</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab"
 												style="font-size: 14px;">Endereço</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#social" role="tab"
@@ -38,6 +38,8 @@
 							<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#password1" role="tab"
 													style="font-size: 14px;">Alterar Senha</a></li>
 						<?php } ?>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#emailnotif" role="tab"
+												style="font-size: 14px;">Notificações por E-mail</a></li>
 					</ul>
 					<!-- Tab panes -->
 
@@ -471,6 +473,28 @@
 										<label>Confirmar Nova Senha</label>
 										<input type="text" id="" name="new2" class="form-control " required
 											   minlength="6">
+									</div>
+									<div class="form-actions col-md-12">
+										<input type="hidden" name="emid" value="<?php echo $basic->em_id; ?>">
+										<button type="submit" class="btn btn-info"><i
+												class="fa fa-check"></i> Salvar
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="tab-pane" id="emailnotif" role="tabpanel">
+							<div class="card-body">
+								<form class="row" action="updateEmailNotifications" method="post" enctype="multipart/form-data">
+									<div class="form-group col-md-6 m-t-20">
+										<?php
+										$email_notif = ($this->employee_model->getEmpEmailNotif($basic->em_id))->email_notif;
+										?>
+										<!--<label>Notificações por E-mail</label>-->
+										<div class="form-check">
+											<input type="checkbox" class="form-check-input" name="emailNotifications" id="emailNotifications" <?=($email_notif == 1) ? "checked" : "" ?>>
+											<label class="form-check-label" for="emailNotifications">Notificações por E-mail</label>
+										</div>
 									</div>
 									<div class="form-actions col-md-12">
 										<input type="hidden" name="emid" value="<?php echo $basic->em_id; ?>">

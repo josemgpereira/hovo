@@ -338,5 +338,17 @@
 		return $result;
 	}
 
+	public function getEmpEmailNotif($em_id){
+		$sql = "SELECT email_notif FROM employee WHERE em_id='$em_id'";
+		$query = $this->db->query($sql);
+		$result = $query->row();
+		return $result;
+	}
+
+	public function updateEmailNotifications($id,$data){
+		$this->db->where('em_id', $id);
+		$this->db->update('employee',$data);
+	}
+
     }
 ?>
