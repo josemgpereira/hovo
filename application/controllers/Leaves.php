@@ -119,6 +119,19 @@ class Leaves extends CI_Controller
 					'dep_id' => $dep_id
 				);
 				if (empty($id)) {
+					$employee = $this->employee_model->emselectByID($emid);
+					$employee_first_name = $employee->first_name;
+					$employee_last_name = $employee->last_name;
+					$admins = $this->employee_model->getAllAdmins();
+					foreach ($admins as $admin) {
+						$admin_em_id = $admin->em_id;
+						$admin_em_email = $admin->em_email;
+						$admin_email_notif = ($this->employee_model->getEmpEmailNotif($admin_em_id))->email_notif;
+						if($admin_email_notif == 1) $this->send_mail_new_leave($admin_em_email, $employee_first_name, $employee_last_name, $applydate, $appstartdate, $appenddate, $duration);
+					}
+					$employee_email = ($this->employee_model->getEmpEmail($emid))->em_email;
+					$employee_notif = ($this->employee_model->getEmpEmailNotif($emid))->email_notif;
+					if($employee_notif == 1) $this->send_mail_new_leave($employee_email, $employee_first_name, $employee_last_name, $applydate, $appstartdate, $appenddate, $duration);
 					$success = $this->leave_model->Application_Apply($data);
 					#$this->session->set_flashdata('feedback','Successfully Updated');
 					#redirect("leave/Application");
@@ -232,7 +245,7 @@ class Leaves extends CI_Controller
 			} else {
 				$success = $this->leave_model->updateAplicationAsResolved($id, $data);
 				$email_notif = ($this->employee_model->getEmpEmailNotif($employeeId))->email_notif;
-				if($email_notif == 1) $this->send_mail($email, $value, $startdate, $enddate, $rejectreason);
+				if($email_notif == 1) $this->send_mail_leave_status($email, $value, $startdate, $enddate, $rejectreason);
 				if ($value == 'Approve') {
 					$dias = $this->ferias_model->Getempdays($employeeId);
 					$dias = $dias->days;
@@ -357,7 +370,7 @@ class Leaves extends CI_Controller
 		}
 	}
 
-	public function send_mail($email,$status,$startdate,$enddate,$rejectreason) {
+	public function send_mail_leave_status($email,$status,$startdate,$enddate,$rejectreason) {
 		$this->load->config('email');
 		$this->load->library('email');
 
@@ -366,6 +379,30 @@ class Leaves extends CI_Controller
 		$subject = 'Aprovação de Férias';
 		$data = array('email'=>$email, 'status'=>$status, 'startdate'=>$startdate, 'enddate'=>$enddate, 'rejectreason'=>$rejectreason);
 		$message = $this->load->view('backend/email_leaves_approve_template.php',$data,TRUE);
+
+		$this->email->set_newline("\r\n");
+		$this->email->from($from, 'HolyManager');
+		$this->email->to($to);
+		$this->email->subject($subject);
+		$this->email->message($message);
+
+		if ($this->email->send()) {
+			$this->session->set_flashdata('feedback','E-mail enviado com sucesso.');
+		} else {
+			//show_error($this->email->print_debugger());
+			$this->session->set_flashdata("feedback","E-mail não enviado com sucesso.");
+		}
+	}
+
+	public function send_mail_new_leave($email,$first_name,$last_name,$applydate,$startdate,$enddate,$duration) {
+		$this->load->config('email');
+		$this->load->library('email');
+
+		$from = $this->config->item('smtp_user');
+		$to = $email;
+		$subject = 'Requisição de Férias';
+		$data = array('first_name'=>$first_name, 'last_name'=>$last_name, 'applydate'=>$applydate, 'startdate'=>$startdate, 'enddate'=>$enddate, 'duration'=>$duration);
+		$message = $this->load->view('backend/email_new_leave_template.php',$data,TRUE);
 
 		$this->email->set_newline("\r\n");
 		$this->email->from($from, 'HolyManager');

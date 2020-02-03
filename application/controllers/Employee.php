@@ -163,7 +163,7 @@ class Employee extends CI_Controller
 								$success = $this->employee_model->AddLeaves($leaves);
 								#$this->confirm_mail_send($email,$pass_hash);
 								#$this->session->set_flashdata('feedback','Successfully Created');
-								$this->send_mail($email, $contact);
+								$this->send_mail_new_user($email, $contact);
 								echo "Adicionado com sucesso";
 								$this->session->set_flashdata('post', null);
 								//redirect(base_url().'employee/Employees','refresh');
@@ -205,7 +205,7 @@ class Employee extends CI_Controller
 							);
 							$success = $this->employee_model->AddLeaves($leaves);
 							#$this->confirm_mail_send($email,$pass_hash);
-							$this->send_mail($email, $contact);
+							$this->send_mail_new_user($email, $contact);
 							echo "Adicionado com sucesso";
 							$this->session->set_flashdata('post', null);
 							//redirect(base_url().'employee/Employees','refresh');
@@ -1124,7 +1124,7 @@ class Employee extends CI_Controller
 		}
 	}
 
-	public function send_mail($email,$password) {
+	public function send_mail_new_user($email,$password) {
 		$this->load->config('email');
 		$this->load->library('email');
 

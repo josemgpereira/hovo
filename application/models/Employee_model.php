@@ -350,5 +350,12 @@
 		$this->db->update('employee',$data);
 	}
 
+	public function getAllAdmins(){
+		$sql = "SELECT * FROM `employee` WHERE `em_role`='ADMIN'";
+		$query=$this->db->query($sql);
+		$result = $query->result();
+		return $result;
+	}
+
     }
 ?>
