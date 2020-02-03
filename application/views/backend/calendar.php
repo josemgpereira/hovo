@@ -38,6 +38,7 @@
 			y    = date.getFullYear()
 
 		$('#calendar').fullCalendar({
+            googleCalendarApiKey: 'AIzaSyC_63S4l8AFTfmACOCzE-qIsMhlgam5Dr4',
 			header    : {
 				left  : 'prev,next today',
 				center: 'title',
@@ -52,7 +53,8 @@
 			},
 			 */
 			weekends: false,
-			events    : events
+			//events    : events
+            eventSources : [{googleCalendarId: 'pt.portuguese#holiday@group.v.calendar.google.com'},{events}]
 		})
 	</script>
 
