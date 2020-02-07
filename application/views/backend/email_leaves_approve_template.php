@@ -5,31 +5,44 @@
 	<title>Hovo Comunicativo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<style>
-	p.email {
-		Margin-top: 0;
-		color: #565656;
-		font-family: Georgia,serif;
-		font-size: 16px;
-		line-height: 50px;
-		Margin-bottom: 25px;
-	}
-	.status {
-		color: red;
-	}
-</style>
 <body>
+<?php if($status=='Approve'){ $status='Aprovado'; } else { $status='Rejeitado'; } ?>
+<p style="font-size: 20px;">O seguinte pedido de férias foi <span style="color: red;"><?php echo $status; ?></span>:</p>
 <div>
-	<p class="email">
-		<b>Data Inicial:</b> <?php echo $startdate; ?><br>
-		<b>Data Final:</b> <?php echo $enddate; ?><br>
-		<?php if($status=='Approve'){ ?>
-		<b>Estado:</b><span class="status"> Aprovado</span><br>
-		<?php } else { ?>
-		<b>Estado:</b><span class="status"> Rejeitado</span><br>
-		<b>Motivo de Rejeição:</b> <?php echo $rejectreason; ?>
+	<table style="width: 100%;border: 1px solid black;">
+		<tbody>
+		<tr>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><b>Nome do Funcionário:</td>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><?php echo $first_name . ' ' . $last_name; ?></td>
+		</tr>
+		<tr>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><b>Data de Requerimento:</td>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><?php echo date('d-m-Y',strtotime($applydate)); ?></td>
+		</tr>
+		<tr>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><b>Data Inicial:</td>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><?php echo date('d-m-Y',strtotime($startdate)); ?></td>
+		</tr>
+		<tr>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><b>Data Final:</td>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><?php echo date('d-m-Y',strtotime($enddate)); ?></td>
+		</tr>
+		<tr>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><b>Duração:</td>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><?php echo ($duration/8) . ' dias'; ?></td>
+		</tr>
+		<tr>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><b>Estado:</td>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><?php echo $status; ?></td>
+		</tr>
+		<?php if($status=='Rejeitado'){ ?>
+		<tr>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><b>Motivo de Rejeição:</td>
+			<td style="width: 50%;text-align: left;border: 1px solid black;font-size: 20px;"><?php echo $rejectreason; ?></td>
+		</tr>
 		<?php } ?>
-	</p>
+		</tbody>
+	</table>
 </div>
 </body>
 </html>

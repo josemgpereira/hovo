@@ -126,7 +126,7 @@ class Leaves extends CI_Controller
 					foreach ($admins as $admin) {
 						$admin_em_id = $admin->em_id;
 						$admin_em_email = $admin->em_email;
-						$admin_email_notif = ($this->employee_model->getEmpEmailNotif($admin_em_id))->email_notif;
+						$admin_email_notif = $admin->email_notif;
 						if($admin_email_notif == 1) $this->send_mail_new_leave($admin_em_email, $employee_first_name, $employee_last_name, $applydate, $appstartdate, $appenddate, $duration);
 					}
 					$employee_email = ($this->employee_model->getEmpEmail($emid))->em_email;
@@ -209,13 +209,18 @@ class Leaves extends CI_Controller
 			$duration = $this->input->post('duration');
 			$type = $this->input->post('type');
 			$depid = $this->input->post('depid');
+			$applydate = $this->input->post('applydate');
 			$startdate = $this->input->post('startdate');
 			$enddate = $this->input->post('enddate');
 			$rejectreason = $this->input->post('rejectreason');
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters();
 
-			$email = ($this->employee_model->getEmpEmail($employeeId))->em_email;
+			$employee = $this->employee_model->emselectByID($employeeId);
+			$employee_email = $employee->em_email;
+			$employee_first_name = $employee->first_name;
+			$employee_last_name = $employee->last_name;
+			$employee_notif = $employee->email_notif;
 
 			if ($value == 'Approve') {
 				$numempleave = $this->ferias_model->GetNumEmpLeave($startdate,$enddate,$depid);
@@ -244,8 +249,7 @@ class Leaves extends CI_Controller
 				echo "Saldo Insuficiente";
 			} else {
 				$success = $this->leave_model->updateAplicationAsResolved($id, $data);
-				$email_notif = ($this->employee_model->getEmpEmailNotif($employeeId))->email_notif;
-				if($email_notif == 1) $this->send_mail_leave_status($email, $value, $startdate, $enddate, $rejectreason);
+				if($employee_notif == 1) $this->send_mail_leave_status($employee_email, $employee_first_name, $employee_last_name, $value, $applydate, $startdate, $enddate, $duration, $rejectreason);
 				if ($value == 'Approve') {
 					$dias = $this->ferias_model->Getempdays($employeeId);
 					$dias = $dias->days;
@@ -370,14 +374,14 @@ class Leaves extends CI_Controller
 		}
 	}
 
-	public function send_mail_leave_status($email,$status,$startdate,$enddate,$rejectreason) {
+	public function send_mail_leave_status($email,$first_name,$last_name,$status,$applydate,$startdate,$enddate,$duration,$rejectreason) {
 		$this->load->config('email');
 		$this->load->library('email');
 
 		$from = $this->config->item('smtp_user');
 		$to = $email;
 		$subject = 'Aprovação de Férias';
-		$data = array('email'=>$email, 'status'=>$status, 'startdate'=>$startdate, 'enddate'=>$enddate, 'rejectreason'=>$rejectreason);
+		$data = array('email'=>$email, 'first_name'=>$first_name, 'last_name'=>$last_name, 'status'=>$status, 'applydate'=>$applydate, 'startdate'=>$startdate, 'enddate'=>$enddate, 'duration'=>$duration, 'rejectreason'=>$rejectreason);
 		$message = $this->load->view('backend/email_leaves_approve_template.php',$data,TRUE);
 
 		$this->email->set_newline("\r\n");
