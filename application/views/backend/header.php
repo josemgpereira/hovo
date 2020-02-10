@@ -35,8 +35,9 @@ date_default_timezone_set('Asia/Dhaka');
     <link href="<?php echo base_url(); ?>assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     
     <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
-     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-    <link href="<?php echo base_url(); ?>assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />   
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/localization/messages_pt_PT.min.js"></script>
+	<link href="<?php echo base_url(); ?>assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
     <!--<link href="<?php echo base_url(); ?>assets/plugins/calendar/dist/fullcalendar.css" rel="stylesheet" type="text/css" />-->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/fullcalendar.min.css" />
 	<script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
