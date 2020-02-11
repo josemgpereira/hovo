@@ -336,12 +336,6 @@ CREATE TABLE `employee` (
   `em_nid` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `employee`
---
-
---- INSERT INTO `employee` (`id`, `em_id`, `em_code`, `des_id`, `dep_id`, `first_name`, `last_name`, `em_email`, `em_password`, `em_role`, `em_address`, `status`, `em_gender`, `em_phone`, `em_birthday`, `em_blood_group`, `em_joining_date`, `em_contact_end`, `em_image`, `em_nid`) VALUES
--- (36, 'Doe1753', '123456', 12, 2, 'Jhon', 'Doe', 'admin@gmail.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', 'ADMIN', NULL, 'ACTIVE', 'Male', '111111111', '2019-02-13', 'O+', '2019-02-15', '2019-02-22', 'Doe1753.jpg', '01253568955555');
 -- --------------------------------------------------------
 
 --
