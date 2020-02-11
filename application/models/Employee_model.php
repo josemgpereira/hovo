@@ -357,5 +357,12 @@
 		return $result;
 	}
 
+	public function getEmpCompanyEmail($adminEmEmail){
+		$sql = "SELECT company_email FROM employee WHERE em_email='$adminEmEmail'";
+		$query = $this->db->query($sql);
+		$result = $query->row();
+		return $result;
+	}
+
     }
 ?>

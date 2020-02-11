@@ -67,7 +67,7 @@ class Employee extends CI_Controller
 			$id = $this->input->post('emid');
 			$fname = $this->input->post('fname');
 			$lname = $this->input->post('lname');
-			$emrand = substr($lname, 0, 3) . rand(1000, 2000);
+			$emrand = substr($lname, 0, 3) . rand(10000, 20000);
 			$dept = $this->input->post('dept');
 			$deg = $this->input->post('deg');
 			$role = $this->input->post('role');
@@ -83,6 +83,9 @@ class Employee extends CI_Controller
 			//$confirm = $this->input->post('confirm');
 			$nid = $this->input->post('nid');
 			$blood = $this->input->post('blood');
+
+			$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
 
 			$this->session->set_flashdata('post', $this->input->post());
 
@@ -145,7 +148,8 @@ class Employee extends CI_Controller
 								'em_contact_end' => $leavedate,
 								'em_image' => $img_url,
 								'em_nid' => $nid,
-								'em_blood_group' => $blood
+								'em_blood_group' => $blood,
+								'company_email' => $company_email
 							);
 							if ($id) {
 								$success = $this->employee_model->Update($data, $id);
@@ -188,7 +192,8 @@ class Employee extends CI_Controller
 							'em_joining_date' => $joindate,
 							'em_contact_end' => $leavedate,
 							'em_nid' => $nid,
-							'em_blood_group' => $blood
+							'em_blood_group' => $blood,
+							'company_email' => $company_email
 						);
 						if ($id) {
 							$success = $this->employee_model->Update($data, $id);
@@ -225,6 +230,7 @@ class Employee extends CI_Controller
 			$id = $this->input->post('emid');
 			$fname = $this->input->post('fname');
 			$lname = $this->input->post('lname');
+			$emrand = substr($lname, 0, 3) . rand(10000, 20000);
 			$dept = $this->input->post('dept');
 			$deg = $this->input->post('deg');
 			$role = $this->input->post('role');
@@ -257,7 +263,8 @@ class Employee extends CI_Controller
 					$fileSize = $_FILES["image_url"]["size"] / 1024;
 					$fileType = $_FILES["image_url"]["type"];
 					$new_file_name = '';
-					$new_file_name .= $id;
+					//$new_file_name .= $id;
+					$new_file_name .= $emrand;
 
 					$config = array(
 						'file_name' => $new_file_name,

@@ -58,7 +58,9 @@
 												<td><?php if($value->em_role=='ADMIN') echo 'Administrador'; else echo 'Funcionário'; ?></td>
                                                 <td class="jsgrid-align-center ">
                                                     <a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($value->em_id); ?>" title="Editar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-pencil-square-o"></i></a>
+													<?php if($this->session->userdata('email')!=$value->em_email) { ?>
 													<a onclick="return confirm('Tem certeza de que deseja eliminar este funcionário?')" href="<?php echo base_url();?>employee/delete_employee/<?php echo $value->em_id;?>" title="Eliminar" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
+													<?php } ?>
 												</td>
                                             </tr>
                                             <?php endforeach; ?>
