@@ -219,13 +219,6 @@ ALTER TABLE department MODIFY COLUMN min_emp int(11) DEFAULT '0';
 -- Dumping data for table `department`
 --
 
-INSERT INTO `department` (`id`, `dep_name`, `min_emp`) VALUES
-(2, 'Administration', 0),
-(3, 'Finance, HR, & Admininstration', 0),
-(4, 'Research', 0),
-(5, 'Information Technology', 0),
-(6, 'Support', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -254,20 +247,6 @@ CREATE TABLE `designation` (
 --
 -- Dumping data for table `designation`
 --
-
-INSERT INTO `designation` (`id`, `des_name`) VALUES
-(2, 'Vice Chairman'),
-(3, 'Chief Executive Officer (CEO)'),
-(4, 'Chief Finance & Admin Officer'),
-(5, 'Sr. Finance & Admin Officer - I'),
-(6, 'Jr. Finance & Admin Officer'),
-(7, 'Senior Research Associate-1'),
-(8, 'Research Associate-1'),
-(9, 'Junior Research Associate'),
-(10, 'Research Assistant'),
-(11, 'Sr. Office Assistant'),
-(12, 'Office Assistant'),
-(13, 'IT Analyst');
 
 -- --------------------------------------------------------
 
@@ -1331,7 +1310,7 @@ ALTER TABLE emp_leave ADD reject_reason varchar(1024) DEFAULT NULL;
 ALTER TABLE employee ADD email_notif boolean NOT NULL DEFAULT 1;
 
 ALTER TABLE employee ADD company_email varchar(256) NOT NULL;
-INSERT INTO `employee` (`em_id`, `em_code`, `des_id`, `dep_id`, `first_name`, `last_name`, `em_email`, `em_password`, `em_role`, `em_address`, `status`, `em_gender`, `em_phone`, `em_birthday`, `em_blood_group`, `em_joining_date`, `em_contact_end`, `em_image`, `em_nid`, `email_notif`, `company_email`) VALUES ('josemgpereira@mail.com', '123456', 4, 3, 'Admin', 'Admin', 'josemgpereira@mail.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', 'ADMIN', NULL, 'ACTIVE', 'Male', '111111111', '1980-02-13', 'O+', '2019-02-15', NULL, NULL, '11111111', '1', 'info@mail.com');
+INSERT INTO `employee` (`em_id`, `em_code`, `des_id`, `dep_id`, `first_name`, `last_name`, `em_email`, `em_password`, `em_role`, `em_address`, `status`, `em_gender`, `em_phone`, `em_birthday`, `em_blood_group`, `em_joining_date`, `em_contact_end`, `em_image`, `em_nid`, `email_notif`, `company_email`) VALUES ('josemgpereira@mail.com', '123456', NULL, NULL, 'Admin', 'Admin', 'josemgpereira@mail.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', 'ADMIN', NULL, 'ACTIVE', 'Male', '111111111', '1980-02-13', 'O+', '2019-02-15', NULL, NULL, '11111111', '1', 'info@mail.com');
 
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
