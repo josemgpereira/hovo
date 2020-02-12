@@ -1324,7 +1324,6 @@ ALTER TABLE `social_media`
 --
 ALTER TABLE `to-do_list`
   MODIFY `id` int(14) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-COMMIT;
 
 CREATE TABLE `leaves` (`id` int(14) NOT NULL AUTO_INCREMENT,`emp_id` varchar(64) DEFAULT NULL,`days` varchar(256) DEFAULT NULL, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ALTER TABLE emp_leave ADD dep_id int(11);
@@ -1334,6 +1333,7 @@ ALTER TABLE employee ADD email_notif boolean NOT NULL DEFAULT 1;
 ALTER TABLE employee ADD company_email varchar(256) NOT NULL;
 INSERT INTO `employee` (`em_id`, `em_code`, `des_id`, `dep_id`, `first_name`, `last_name`, `em_email`, `em_password`, `em_role`, `em_address`, `status`, `em_gender`, `em_phone`, `em_birthday`, `em_blood_group`, `em_joining_date`, `em_contact_end`, `em_image`, `em_nid`, `email_notif`, `company_email`) VALUES ('josemgpereira@mail.com', '123456', 4, 3, 'Admin', 'Admin', 'josemgpereira@mail.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', 'ADMIN', NULL, 'ACTIVE', 'Male', '111111111', '1980-02-13', 'O+', '2019-02-15', NULL, NULL, '11111111', '1', 'info@mail.com');
 
+COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
