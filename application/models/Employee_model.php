@@ -364,5 +364,12 @@
 		return $result;
 	}
 
+	public function emselectByCompanyEmail($company_email){
+		$sql = "SELECT * FROM `employee` WHERE `company_email`='$company_email'";
+		$query=$this->db->query($sql);
+		$result = $query->result();
+		return $result;
+	}
+
     }
 ?>

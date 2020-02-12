@@ -44,7 +44,10 @@ class Employee extends CI_Controller
 	public function Employees()
 	{
 		if ($this->session->userdata('user_login_access') != False) {
-			$data['employee'] = $this->employee_model->emselect();
+			$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+			//$data['employee'] = $this->employee_model->emselect();
+			$data['employee'] = $this->employee_model->emselectByCompanyEmail($company_email);
 			$this->load->view('backend/employees', $data);
 		} else {
 			redirect(base_url(), 'refresh');
