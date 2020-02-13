@@ -31,8 +31,10 @@ class Leaves extends CI_Controller
 	public function Application()
 	{
 		if ($this->session->userdata('user_login_access') != False) {
-
-			$data['employee'] = $this->employee_model->emselectactive(); // gets active employee details
+			$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+			//$data['employee'] = $this->employee_model->emselectactive(); // gets active employee details
+			$data['employee'] = $this->employee_model->emselectactiveByCompanyEmail($company_email);
 			$data['leavetypes'] = $this->leave_model->GetleavetypeInfo();
 			$data['application'] = $this->leave_model->AllLeaveAPPlication();
 			$this->load->view('backend/ferias_approve', $data);

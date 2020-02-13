@@ -371,5 +371,12 @@
 		return $result;
 	}
 
+	public function emselectactiveByCompanyEmail($company_email){
+		$sql = "SELECT * FROM `employee` WHERE `status`='ACTIVE' AND `company_email`='$company_email'";
+		$query=$this->db->query($sql);
+		$result = $query->result();
+		return $result;
+	}
+
     }
 ?>
