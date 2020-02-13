@@ -36,7 +36,8 @@ class Leaves extends CI_Controller
 			//$data['employee'] = $this->employee_model->emselectactive(); // gets active employee details
 			$data['employee'] = $this->employee_model->emselectactiveByCompanyEmail($company_email);
 			$data['leavetypes'] = $this->leave_model->GetleavetypeInfo();
-			$data['application'] = $this->leave_model->AllLeaveAPPlication();
+			//$data['application'] = $this->leave_model->AllLeaveAPPlication();
+			$data['application'] = $this->leave_model->AllLeaveAPPlicationByCompanyEmail($company_email);
 			$this->load->view('backend/ferias_approve', $data);
 		} else {
 			redirect(base_url(), 'refresh');
@@ -96,6 +97,9 @@ class Leaves extends CI_Controller
 			$leaveleftdays = $this->LeaveLeftDays($emid);
 			$leavelefthour = $leaveleftdays * 8;
 
+			$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+
 			if ($leavelefthour < $duration) {
 				echo "Saldo Insuficiente";
 			} else {
@@ -118,7 +122,8 @@ class Leaves extends CI_Controller
 					'leave_type' => $type,
 					'leave_duration' => $duration,
 					'leave_status' => 'Not Approve',
-					'dep_id' => $dep_id
+					'dep_id' => $dep_id,
+					'company_email' => $company_email
 				);
 				if (empty($id)) {
 					$employee = $this->employee_model->emselectByID($emid);
@@ -368,10 +373,11 @@ class Leaves extends CI_Controller
 	public function historic()
 	{
 		if ($this->session->userdata('user_login_access') != False) {
-
+			$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
 			$data['employee'] = $this->employee_model->emselectactive(); // gets active employee details
 			$data['leavetypes'] = $this->leave_model->GetleavetypeInfo();
-			$data['application'] = $this->leave_model->allLeaveAplicationHistoric();
+			$data['application'] = $this->leave_model->allLeaveAplicationHistoric($company_email);
 			$this->load->view('backend/historic', $data);
 		} else {
 			redirect(base_url(), 'refresh');

@@ -1315,6 +1315,8 @@ INSERT INTO `employee` (`em_id`, `em_code`, `des_id`, `dep_id`, `first_name`, `l
 ALTER TABLE department ADD company_email varchar(256) NOT NULL;
 ALTER TABLE designation ADD company_email varchar(256) NOT NULL;
 
+ALTER TABLE emp_leave ADD company_email varchar(256) NOT NULL;
+
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

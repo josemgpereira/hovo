@@ -54,7 +54,7 @@
                                 <!--<li><a href="<?php echo base_url(); ?>leave/Application">Requerimento de Licença</a></li>-->
 								<li><a href="<?php echo base_url(); ?>leaves/Application">Requerimento de Licença</a></li>
 								<li><a href="<?php echo base_url(); ?>leaves/historic">Histórico de Requerimentos</a></li>
-                                <li><a href="<?php echo base_url(); ?>leave/Leave_report">Relatório</a></li>
+                                <!--<li><a href="<?php echo base_url(); ?>leave/Leave_report">Relatório</a></li>-->
                             </ul>
                         </li>
 						<?php } ?>
