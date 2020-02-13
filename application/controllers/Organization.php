@@ -25,9 +25,12 @@ class Organization extends CI_Controller {
 			$this->load->view('login');
 	}
     public function Department(){
-        if($this->session->userdata('user_login_access') != False) { 
-        $data['department'] = $this->organization_model->depselect();
-        $this->load->view('backend/department',$data); 
+        if($this->session->userdata('user_login_access') != False) {
+        	$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+			//$data['department'] = $this->organization_model->depselect();
+			$data['department'] = $this->organization_model->depselectByCompanyEmail($company_email);
+			$this->load->view('backend/department',$data);
         }
     else{
 		redirect(base_url() , 'refresh');
