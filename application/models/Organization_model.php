@@ -60,5 +60,12 @@ class Organization_model extends CI_Model{
 		$result = $query->result();
 		return $result;
 	}
+
+	public function desselectByCompanyEmail($company_email){
+		$sql    = "SELECT * FROM `designation` WHERE `company_email`='$company_email'";
+		$query  = $this->db->query($sql);
+		$result = $query->result();
+		return $result;
+	}
 }
 ?>

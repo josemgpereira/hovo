@@ -95,9 +95,12 @@ class Organization extends CI_Controller {
 	}            
     }
     public function Designation(){
-        if($this->session->userdata('user_login_access') != False) { 
-        $data['designation'] = $this->organization_model->desselect();
-        $this->load->view('backend/designation',$data);
+        if($this->session->userdata('user_login_access') != False) {
+        	$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+			//$data['designation'] = $this->organization_model->desselect();
+			$data['designation'] = $this->organization_model->desselectByCompanyEmail($company_email);
+			$this->load->view('backend/designation',$data);
         }
     else{
 		redirect(base_url() , 'refresh');
@@ -113,8 +116,10 @@ class Organization extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             echo validation_errors();
         }else{
+			$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
             $data = array();
-            $data = array('des_name' => $des);
+            $data = array('des_name' => $des, 'company_email' => $company_email);
             $success = $this->organization_model->Add_Designation($data);
             echo "Adicionado com sucesso";
         }

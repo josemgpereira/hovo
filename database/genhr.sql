@@ -1313,6 +1313,7 @@ ALTER TABLE employee ADD company_email varchar(256) NOT NULL;
 INSERT INTO `employee` (`em_id`, `em_code`, `des_id`, `dep_id`, `first_name`, `last_name`, `em_email`, `em_password`, `em_role`, `em_address`, `status`, `em_gender`, `em_phone`, `em_birthday`, `em_blood_group`, `em_joining_date`, `em_contact_end`, `em_image`, `em_nid`, `email_notif`, `company_email`) VALUES ('josemgpereira@mail.com', '123456', NULL, NULL, 'Admin', 'Admin', 'josemgpereira@mail.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', 'ADMIN', NULL, 'ACTIVE', 'Male', '111111111', '1980-02-13', 'O+', '2019-02-15', NULL, NULL, '11111111', '1', 'info@mail.com');
 
 ALTER TABLE department ADD company_email varchar(256) NOT NULL;
+ALTER TABLE designation ADD company_email varchar(256) NOT NULL;
 
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
