@@ -299,7 +299,7 @@
 		FROM `emp_leave`
 		LEFT JOIN `employee` ON `emp_leave`.`em_id`=`employee`.`em_id`
 		LEFT JOIN `leave_types` ON `emp_leave`.`typeid`=`leave_types`.`type_id`
-		WHERE (`emp_leave`.`leave_status`='Not Approve') AND (`emp_leave`.`company_email`='$company_email')";
+		WHERE (`emp_leave`.`company_email`='$company_email')";
 		$query=$this->db->query($sql);
 		$result = $query->result();
 		return $result;
