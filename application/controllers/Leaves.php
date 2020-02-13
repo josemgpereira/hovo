@@ -129,7 +129,7 @@ class Leaves extends CI_Controller
 					$employee = $this->employee_model->emselectByID($emid);
 					$employee_first_name = $employee->first_name;
 					$employee_last_name = $employee->last_name;
-					$admins = $this->employee_model->getAllAdmins();
+					$admins = $this->employee_model->getAllAdminsByCompanyEmail($company_email);
 					foreach ($admins as $admin) {
 						$admin_em_id = $admin->em_id;
 						$admin_em_email = $admin->em_email;

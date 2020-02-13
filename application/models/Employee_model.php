@@ -350,8 +350,8 @@
 		$this->db->update('employee',$data);
 	}
 
-	public function getAllAdmins(){
-		$sql = "SELECT * FROM `employee` WHERE `em_role`='ADMIN'";
+	public function getAllAdminsByCompanyEmail($company_email){
+		$sql = "SELECT * FROM `employee` WHERE `em_role`='ADMIN' AND `company_email`='$company_email'";
 		$query=$this->db->query($sql);
 		$result = $query->result();
 		return $result;
