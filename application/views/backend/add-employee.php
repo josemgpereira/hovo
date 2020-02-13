@@ -16,8 +16,14 @@
 		</div>
 	</div>
 	<div class="message"></div>
-	<?php $degvalue = $this->employee_model->getdesignation(); ?>
-	<?php $depvalue = $this->employee_model->getdepartment(); ?>
+	<?php //$degvalue = $this->employee_model->getdesignation(); ?>
+	<?php //$depvalue = $this->employee_model->getdepartment(); ?>
+	<?php
+		$adminEmEmail = $this->session->userdata('email');
+		$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+		$depvalue = $this->organization_model->depselectByCompanyEmail($company_email);
+		$degvalue = $this->organization_model->desselectByCompanyEmail($company_email);
+	?>
 	<div class="container-fluid">
 
 		<div class="row">
