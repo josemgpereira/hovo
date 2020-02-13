@@ -44,8 +44,10 @@ class Organization extends CI_Controller {
        if ($this->form_validation->run() == FALSE) {
            echo validation_errors();
        }else{
+       	$adminEmEmail = $this->session->userdata('email');
+       	$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
         $data = array();
-        $data = array('dep_name' => $dep, 'min_emp' => $min_emp);
+        $data = array('dep_name' => $dep, 'min_emp' => $min_emp, 'company_email' => $company_email);
         $success = $this->organization_model->Add_Department($data);
         $this->session->set_flashdata('feedback','Successfully Added');
            echo "Adicionado com sucesso";
