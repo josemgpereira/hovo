@@ -365,7 +365,7 @@
 										<div class="form-group col-md-6 m-t-5">
 											<label>Número de Dias</label>
 											<input type="text" name="noday" class="form-control form-control-line"
-												   placeholder="" <?php if ($this->session->userdata('user_type') == 'EMPLOYEE') { ?> readonly <?php } ?>
+												   placeholder="" <?php if (($this->session->userdata('user_type') == 'EMPLOYEE') or ($basic->em_role == 'ADMIN')) { ?> readonly <?php } ?>
 												   value="<?php if (!empty($leaves->days)) echo $leaves->days ?>" required>
 										</div>
 

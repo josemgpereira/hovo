@@ -208,7 +208,7 @@ class Leaves extends CI_Controller
 			$value = $this->input->post('lvalue');
 			$duration = $this->input->post('duration');
 			$type = $this->input->post('type');
-			$depid = $this->input->post('depid');
+			//$depid = $this->input->post('depid');
 			$applydate = $this->input->post('applydate');
 			$startdate = $this->input->post('startdate');
 			$enddate = $this->input->post('enddate');
@@ -221,6 +221,8 @@ class Leaves extends CI_Controller
 			$employee_first_name = $employee->first_name;
 			$employee_last_name = $employee->last_name;
 			$employee_notif = $employee->email_notif;
+
+			$depid = $employee->dep_id;
 
 			if ($value == 'Approve') {
 				$numempleave = $this->ferias_model->GetNumEmpLeave($startdate,$enddate,$depid);
