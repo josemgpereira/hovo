@@ -28,7 +28,10 @@ class Calendar extends CI_Controller
 	public function Leaves()
 	{
 		if ($this->session->userdata('user_login_access') != False) {
-			$data['result'] = $this->db->get("emp_leave")->result();
+			$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+			$data['result'] = $this->leave_model->allLeaveAplicationHistoric($company_email);
+			//$data['result'] = $this->db->get("emp_leave")->result();
 
 			if (empty($data['result'])){
 				$data['data'][0]['title'] = "";
