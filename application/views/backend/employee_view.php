@@ -83,16 +83,16 @@
 													<small class="text-muted p-t-30 db">Perfil Social</small>
 													<br/>
 													<a class="btn btn-circle btn-secondary"
-													   href="<?php if (!empty($socialmedia->facebook)) echo '//' . $socialmedia->facebook ?>"
+													   href="<?php if (!empty($socialmedia->facebook)) echo $socialmedia->facebook ?>"
 													   target="_blank"><i class="fa fa-facebook"></i></a>
 													<a class="btn btn-circle btn-secondary"
-													   href="<?php if (!empty($socialmedia->twitter)) echo '//' . $socialmedia->twitter ?>"
+													   href="<?php if (!empty($socialmedia->twitter)) echo $socialmedia->twitter ?>"
 													   target="_blank"><i class="fa fa-twitter"></i></a>
 													<a class="btn btn-circle btn-secondary"
-													   href="<?php if (!empty($socialmedia->skype_id)) echo '//' . $socialmedia->skype_id ?>"
+													   href="<?php if (!empty($socialmedia->skype_id)) echo $socialmedia->skype_id ?>"
 													   target="_blank"><i class="fa fa-skype"></i></a>
 													<a class="btn btn-circle btn-secondary"
-													   href="<?php if (!empty($socialmedia->google_plus)) echo '//' . $socialmedia->google_plus ?>"
+													   href="<?php if (!empty($socialmedia->google_plus)) echo $socialmedia->google_plus ?>"
 													   target="_blank"><i class="fa fa-google"></i></a>
 												</div>
 											</div>
