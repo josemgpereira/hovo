@@ -71,10 +71,13 @@ class Organization extends CI_Controller {
 	}            
     }
     public function Dep_edit($dep){
-        if($this->session->userdata('user_login_access') != False) { 
-        $data['department'] = $this->organization_model->depselect();
-        $data['editdepartment']=$this->organization_model->department_edit($dep);
-        $this->load->view('backend/department', $data);
+        if($this->session->userdata('user_login_access') != False) {
+        	$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+			$data['department'] = $this->organization_model->depselectByCompanyEmail($company_email);
+			//$data['department'] = $this->organization_model->depselect();
+			$data['editdepartment']=$this->organization_model->department_edit($dep);
+			$this->load->view('backend/department', $data);
         }
     else{
 		redirect(base_url() , 'refresh');
@@ -140,9 +143,12 @@ class Organization extends CI_Controller {
     }
     public function Edit_des($des){
         if($this->session->userdata('user_login_access') != False) {
-        $data['designation'] = $this->organization_model->desselect();
-        $data['editdesignation']=$this->organization_model->designation_edit($des);
-        $this->load->view('backend/designation', $data);
+			$adminEmEmail = $this->session->userdata('email');
+			$company_email = ($this->employee_model->getEmpCompanyEmail($adminEmEmail))->company_email;
+			$data['designation'] = $this->organization_model->desselectByCompanyEmail($company_email);
+			//$data['designation'] = $this->organization_model->desselect();
+			$data['editdesignation']=$this->organization_model->designation_edit($des);
+			$this->load->view('backend/designation', $data);
         }
     else{
 		redirect(base_url() , 'refresh');
