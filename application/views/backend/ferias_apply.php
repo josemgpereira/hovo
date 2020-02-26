@@ -4,12 +4,12 @@
     <div class="message"></div>
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor"><i class="fa fa-fighter-jet" style="color:#1976d2"> </i> Requerimento de Licença</h3>
+            <h3 class="text-themecolor"><i class="fa fa-fighter-jet" style="color:#1976d2"> </i> Requerimento de Ausência</h3>
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Início</a></li>
-                <li class="breadcrumb-item active">Requerimento de Licença</li>
+                <li class="breadcrumb-item active">Requerimento de Ausência</li>
             </ol>
         </div>
     </div>
@@ -121,7 +121,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content ">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel1">Requerimento de Licença</h4>
+                        <h4 class="modal-title" id="exampleModalLabel1">Requerimento de Ausência</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <form method="post" action="Add_Applications" id="leaveapply" enctype="multipart/form-data">

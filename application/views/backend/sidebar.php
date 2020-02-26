@@ -31,11 +31,11 @@
                         <li> <a href="<?php echo base_url(); ?>" ><i class="mdi mdi-gauge"></i><span class="hide-menu">Painel</span></a></li>
                         <?php if($this->session->userdata('user_type')=='EMPLOYEE'){ ?>
 						<li><a href="<?php echo base_url(); ?>employee/view?I=<?php echo base64_encode($basicinfo->em_id); ?>" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Funcionário</span></a></li>
-						<li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Licença</span></a>
+						<li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Ausência</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <!--<li><a href="<?php echo base_url(); ?>leave/Holidays">Feriado</a></li>-->
                                 <!--<li><a href="<?php echo base_url(); ?>leave/EmApplication">Requerimento de Licença</a></li>-->
-								<li><a href="<?php echo base_url(); ?>leaves/EmApplication">Requerimento de Licença</a></li>
+								<li><a href="<?php echo base_url(); ?>leaves/EmApplication">Requerimento de Ausência</a></li>
 								<!--<li><a href="<?php echo base_url(); ?>leaves/emphistoric">Histórico de Requerimentos</a></li>-->
                             </ul>
                         </li>
@@ -47,12 +47,12 @@
                             </ul>
                         </li>
 						<li><a href="<?php echo base_url(); ?>employee/Employees" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Funcionários</span></a></li>
-						<li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Licença</span></a>
+						<li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-rocket"></i><span class="hide-menu">Ausência</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <!--<li><a href="<?php echo base_url(); ?>leave/Holidays">Feriado</a></li>-->
                                 <!--<li><a href="<?php echo base_url(); ?>leave/leavetypes">Tipo de Licença</a></li>-->
                                 <!--<li><a href="<?php echo base_url(); ?>leave/Application">Requerimento de Licença</a></li>-->
-								<li><a href="<?php echo base_url(); ?>leaves/Application">Requerimento de Licença</a></li>
+								<li><a href="<?php echo base_url(); ?>leaves/Application">Requerimento de Ausência</a></li>
 								<li><a href="<?php echo base_url(); ?>leaves/historic">Histórico de Requerimentos</a></li>
                                 <!--<li><a href="<?php echo base_url(); ?>leave/Leave_report">Relatório</a></li>-->
                             </ul>
